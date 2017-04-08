@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import ConfirmComponent from './ConfirmComponent'
+import merge from '../../utils/merge'
 
 let instance;
 
@@ -17,9 +18,10 @@ let Confirm = (content, options={}) => {
         initInstance();
     }
     options.content = content;
-    for (var key in instance.$data) {
-        instance.$data[key] = options[key] ? options[key] : instance.$data[key]
-    }
+    merge(instance.$data, options);
+    // for (var key in instance.$data) {
+    //     instance.$data[key] = options[key] ? options[key] : instance.$data[key]
+    // }
 
     return new Promise((resolve, reject)=>{
         instance.showConfirm = true;
@@ -37,40 +39,3 @@ let Confirm = (content, options={}) => {
 
 }
 export default Confirm;
-
-// let $vm;
-
-// export default (text, options = {}) => {
-
-//     let title = options.title || '提示'
-//     let success = options.success || function() {};
-//     let cancel = options.cancel || function() {};
-
-//     let Confirm = Vue.extend(ConfirmComponent);
-//     if (!$vm) {
-//         $vm = new Confirm({
-//             el: document.createElement('div'),
-//             data() {
-//                 return {
-//                     text: text,
-//                     show: true,
-//                     title: title
-//                 }
-//             },
-//             methods: {
-//                 success() {
-//                     $vm.show = false;
-//                     success.apply(this);
-//                 },
-//                 cancel() {
-//                     $vm.show = false;
-//                     cancel.apply(this);
-//                 }
-
-//             }
-//         });
-//         document.body.appendChild($vm.$el);
-//     } else {
-//         $vm.show = true;
-//     }
-// }

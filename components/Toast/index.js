@@ -1,7 +1,10 @@
 import Vue from 'vue'
 import ToastComponent from './ToastComponent'
+import merge from '../../utils/merge'
 
 let instance, duration;
+
+let showing = false;
 
 const DEFAULT_DURATION =  1500;
 
@@ -14,7 +17,7 @@ let initInstance = ()=>{
     document.body.appendChild(instance.$el);
 }
 
-let showing = false;
+
 
 let Toast = (content, options={})=>{
     if (!instance) {
@@ -23,9 +26,10 @@ let Toast = (content, options={})=>{
 
     duration = options.duration || DEFAULT_DURATION;
     options.content = content;
-    for (var key in instance.$data) {
-        instance.$data[key] = options[key] ? options[key] : instance.$data[key]
-    }
+    merge(instance.$data, options);
+    // for (var key in instance.$data) {
+    //     instance.$data[key] = options[key] ? options[key] : instance.$data[key]
+    // }
     // 如果正在显示, 不响应点击
     if (!showing) {
         showing = true;

@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import AlertComponent from './AlertComponent'
+import merge from '../../utils/merge'
 
 let instance;
 
@@ -19,9 +20,11 @@ let Alert = (content, options={}) =>{
     }
 
     options.content = content;
-    for (var key in instance.$data) {
-    	instance.$data[key] = options[key] ? options[key] : instance.$data[key]
-    }
+
+    merge(instance.$data, options);
+    // for (var key in instance.$data) {
+    // 	instance.$data[key] = options[key] ? options[key] : instance.$data[key]
+    // }
 
     return new Promise((resolve, reject)=>{
     	instance.showAlert = true;
