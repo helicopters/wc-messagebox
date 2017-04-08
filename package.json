@@ -1,0 +1,21 @@
+{
+  "name": "wc-messagebox",
+  "version": "1.0.0",
+  "description": "Vue plugins | alert | confirm | toast",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "vue",
+    "plugin",
+    "alert",
+    "confirm",
+    "toast"
+  ],
+  "author": "linfeng123",
+  "license": "MIT",
+  "devDependencies": {
+    "vue": "^2.2.6"
+  }
+}
