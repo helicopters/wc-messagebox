@@ -6,7 +6,7 @@
     			<div class="popup-text">{{content}}</div>
     		</div>
     		<div class="popup-buttons">
-    			<span class="popup-button popup-button-bold" @touchend="success">
+    			<span class="popup-button popup-button-bold" @click="success">
                     {{btnText}}
                 </span>
     		</div>

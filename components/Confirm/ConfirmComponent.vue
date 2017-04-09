@@ -6,8 +6,8 @@
                 <div class="popup-text">{{content}}</div>
             </div>
             <div class="popup-buttons">
-                <span class="popup-button popup-button-bold" @touchend="success">{{yes}}</span>
-                <span class="popup-button popup-button-bold" @touchend="cancel">{{no}}</span>
+                <span class="popup-button popup-button-bold" @click="success">{{yes}}</span>
+                <span class="popup-button popup-button-bold" @click="cancel">{{no}}</span>
             </div>
         </div>
         <div class="popup-backdrop active" style="display: block;"></div>

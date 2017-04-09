@@ -17,8 +17,6 @@ let initInstance = ()=>{
     document.body.appendChild(instance.$el);
 }
 
-
-
 let Toast = (content, options={})=>{
     if (!instance) {
         initInstance();
@@ -27,9 +25,7 @@ let Toast = (content, options={})=>{
     duration = options.duration || DEFAULT_DURATION;
     options.content = content;
     merge(instance.$data, options);
-    // for (var key in instance.$data) {
-    //     instance.$data[key] = options[key] ? options[key] : instance.$data[key]
-    // }
+
     // 如果正在显示, 不响应点击
     if (!showing) {
         showing = true;

@@ -4,6 +4,7 @@ import Confirm from './components/Confirm'
 import Toast from './components/Toast'
 
 import './css/plugin.css';
+import './fonts/iconfont.css'
 
 export default {
 	install (Vue) {
