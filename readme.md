@@ -22,6 +22,12 @@ options = {
   ...
 }
 this.$toast(text, options)
+options = {
+	content: '',  // toast 显示的内容
+	position: 'bottom', // bottom | center
+	withImg: false	// 是否有图片, 这个应该修改一下
+}
+
 this.$confirm(text, options)
 
 ```

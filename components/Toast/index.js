@@ -31,6 +31,7 @@ let Toast = (content, options={})=>{
         showing = true;
         instance.showToast = true;
 
+        // 这里没有算动画的执行时间, 只是添加了动画效果, 并且是默认具有动画效果
         setTimeout(()=>{
             showing = false;
             instance.showToast = false;  
