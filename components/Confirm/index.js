@@ -19,9 +19,6 @@ let Confirm = (content, options={}) => {
     }
     options.content = content;
     merge(instance.$data, options);
-    // for (var key in instance.$data) {
-    //     instance.$data[key] = options[key] ? options[key] : instance.$data[key]
-    // }
 
     return new Promise((resolve, reject)=>{
         instance.showConfirm = true;
@@ -29,11 +26,11 @@ let Confirm = (content, options={}) => {
         let cancel = instance.cancel;
         instance.success = () => {
             success();
-            resolve();
+            resolve(true);
         }
         instance.cancel = () => {
             cancel();
-            reject();
+            reject(false);
         }
     });
 

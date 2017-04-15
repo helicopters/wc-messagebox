@@ -1,4 +1,5 @@
-
+出现一个  Uncaught (in promise)
+是因为 异常没有被消费掉, 一般你需要给一个  catch 函数
 
 
 toast 狂点的话会一直出现, 这个问题怎么解决

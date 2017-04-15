@@ -34,13 +34,6 @@
 		-webkit-transform: translate(-50%, -50%);
 		transform: translate(-50%, -50%);		
 	}
-	/*对号*/
-	.save{
-		display: block;
-		margin-bottom: 20px;
-		font-size: 40px;
-	}
-
 	.fade-enter-active, .fade-leave-active {
 	  transition: opacity .4s
 	}
@@ -53,7 +46,6 @@
 	<transition name="fade" @after-leave="afterLeave">
 		<div class="toast-container" :class="position"v-show="showToast">
 			<div class="toast-message">
-				<i class="iconfont save" v-if="withImg">&#xe7bc;</i>
 				{{content}}
 			</div>
 		</div>

@@ -5,28 +5,21 @@
 
 ## Install
 ```shell
-npm i wc-messagebox --save-dev
+npm i wc-messagebox --save
 ```
 
 ## Quick Start
 ```javascript
 import MessageBox from 'wc-messagebox'
+import 'wc-messagebox/dist/messagebox.css'
 Vue.use(MessageBox)
 ```
 
 ## Usage
 ```javascript
 this.$alert(text, options)
-options = {
-  title: ''
-  ...
-}
+
 this.$toast(text, options)
-options = {
-	content: '',  // toast 显示的内容
-	position: 'bottom', // bottom | center
-	withImg: false	// 是否有图片, 这个应该修改一下
-}
 
 this.$confirm(text, options)
 
@@ -34,4 +27,9 @@ this.$confirm(text, options)
 
 ## Introduction
 1. 返回的是一个Promise, 所以可以 这样调用
-> this.$confirm(text).then(success).catch(fail)
+```javascript
+this
+	.$confirm(text)
+	.then(success)
+	.catch(fail)
+```
