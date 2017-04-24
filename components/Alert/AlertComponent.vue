@@ -1,5 +1,5 @@
 <template>
-    <div v-show="showAlert">
+    <div v-show="show">
     	<div class="popup popup-in" style="display: block;">
     		<div class="popup-inner">
                 <div class="popup-title" v-if="title">{{title}}</div>
@@ -15,10 +15,12 @@
     </div>
 </template>
 <script>
+    import pageChange from '../../mixins'
 	export default {
+        mixins: [pageChange],
         data () {
             return {
-                showAlert: true,
+                show: true,
                 title: '提示',
                 content: '',
                 btnText: '确定'
@@ -26,7 +28,7 @@
         },
         methods: {
             success () {
-                this.showAlert = false;
+                this.show = false;
             }
         }
     }

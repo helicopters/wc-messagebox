@@ -44,7 +44,7 @@
 </style>
 <template>
 	<transition name="fade" @after-leave="afterLeave">
-		<div class="toast-container" :class="position"v-show="showToast">
+		<div class="toast-container" :class="position"v-show="show">
 			<div class="toast-message">
 				{{content}}
 			</div>
@@ -52,10 +52,12 @@
 	</transition>
 </template>
 <script>
+    import pageChange from '../../mixins'
 	export default {
+        mixins: [pageChange],
 		data () {
 			return {
-				showToast: true,
+				show: true,
 				content: '',
 				position: 'bottom',
 				withImg: false
@@ -63,7 +65,7 @@
 		},
 		methods: {
 			afterLeave () {
-				this.showToast = false;
+				this.show = false;
 			}
 		}
 	}

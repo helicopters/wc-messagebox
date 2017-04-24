@@ -4,30 +4,29 @@ import merge from '../../utils/merge'
 
 let instance;
 
+let globalConfig;
+
 let AlertConstructor = Vue.extend(AlertComponent);
 
 let initInstance = ()=>{
     instance = new AlertConstructor({
-        el: document.createElement('div')
+        el: document.createElement('div'),
+        replace: true
     });
     document.body.appendChild(instance.$el);
 }
 
 let Alert = (content, options={}) =>{
-
     if (!instance) {
     	initInstance();   
     }
-
     options.content = content;
 
-    merge(instance.$data, options);
-    // for (var key in instance.$data) {
-    // 	instance.$data[key] = options[key] ? options[key] : instance.$data[key]
-    // }
+    merge(instance.$data, globalConfig);
 
+    merge(instance.$data, options);
     return new Promise((resolve, reject)=>{
-    	instance.showAlert = true;
+    	instance.show = true;
     	let success = instance.success;
     	instance.success = () => {
     		success();
@@ -37,4 +36,9 @@ let Alert = (content, options={}) =>{
     
 }
 
-export default Alert;
+export default {
+    install (Vue, options={}) {
+        globalConfig = options;
+        Vue.prototype.$alert = Alert;
+    }
+};

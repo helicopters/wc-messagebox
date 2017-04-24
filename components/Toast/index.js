@@ -29,15 +29,18 @@ let Toast = (content, options={})=>{
     // 如果正在显示, 不响应点击
     if (!showing) {
         showing = true;
-        instance.showToast = true;
+        instance.show = true;
 
         // 这里没有算动画的执行时间, 只是添加了动画效果, 并且是默认具有动画效果
         setTimeout(()=>{
             showing = false;
-            instance.showToast = false;  
+            instance.show = false;  
         }, duration);
 
     }
 }
-
-export default Toast;
+export default {
+    install (Vue, options={}) {
+        Vue.prototype.$toast = Toast;
+    }
+};

@@ -4,6 +4,8 @@ import merge from '../../utils/merge'
 
 let instance;
 
+let globalConfig = {};
+
 let ConfirmConstructor = Vue.extend(ConfirmComponent);
 
 let initInstance = ()=>{
@@ -18,12 +20,17 @@ let Confirm = (content, options={}) => {
         initInstance();
     }
     options.content = content;
+
+    // 将全局的 confirm 配置 合并到默认值中
+    merge(instance.$data, globalConfig);
+    // 将单个 confirm instance 的配置合并到默认值中
     merge(instance.$data, options);
 
     return new Promise((resolve, reject)=>{
-        instance.showConfirm = true;
+        instance.show = true;
         let success = instance.success;
         let cancel = instance.cancel;
+        // event
         instance.success = () => {
             success();
             resolve(true);
@@ -35,4 +42,9 @@ let Confirm = (content, options={}) => {
     });
 
 }
-export default Confirm;
+export default {
+    install (Vue, options={}) {
+        globalConfig = options;
+        Vue.prototype.$confirm = Confirm;
+    }
+};

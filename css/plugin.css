@@ -120,9 +120,15 @@
 .popup-button:last-child:after {
 	display: none;
 }
+/*加粗*/
 .popup-button.popup-button-bold {
 	font-weight: 600;
 }
+/*红色*/
+.popup-button.popup-button-delete {
+	color: #eb4e3d;
+}
+
 .popup-backdrop {
 	position: fixed;
 	z-index: 998;
