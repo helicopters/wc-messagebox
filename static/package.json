@@ -1,0 +1,20 @@
+{
+    "name": "wc-messagebox",
+    "version": "1.2.1",
+    "description": "Vue plugins | alert | confirm | toast",
+    "main": "index.js",
+    "keywords": [
+        "vue",
+        "plugin",
+        "alert",
+        "confirm",
+        "toast"
+    ],
+    "author": "linfeng123",
+    "license": "MIT",
+    "devDependencies": {
+        "babel-preset-env": "^1.3.3",
+        "babel-preset-stage-0": "^6.24.1",
+        "vue": "^2.2.6"
+    }
+}
