@@ -64,7 +64,7 @@ module.exports =
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 10);
+/******/ 	return __webpack_require__(__webpack_require__.s = 11);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -78,14 +78,51 @@ module.exports = require("vue");
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony default export */ __webpack_exports__["a"] = (function (src, target) {
-	for (var key in target) {
-		src[key] = target[key] ? target[key] : src[key];
-	}
+// 暂时的, 以后有更好的方法再做修改
+/* harmony default export */ __webpack_exports__["a"] = ({
+  mounted: function mounted() {
+    var vm = this;
+    window.addEventListener('hashchange', function (e) {
+      console.log('trigger hashchange');
+      vm.show = false;
+    }, false);
+    window.onpopstate = function () {
+      console.log('trigger popstate');
+      vm.show = false;
+    };
+    window.onpageshow = function () {
+      console.log('trigger pageshow');
+      vm.show = false;
+    };
+  }
 });
 
 /***/ }),
 /* 2 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/*
+	在实际使用中有时 就是不想要标题, 如果按照以前的方式, 那么
+	需要传入: title: ' ', 这样不舒服
+	所以增加一个判断: 只要用户配置存在某个字段且不等于 undefined, 那么就使用
+	用户提供的字段值
+*/
+var isExists = function isExists(val) {
+	if (typeof val !== 'undefined') {
+		return true;
+	}
+	return false;
+};
+
+/* harmony default export */ __webpack_exports__["a"] = (function (src, target) {
+	for (var key in target) {
+		src[key] = isExists(target[key]) ? target[key] : src[key];
+	}
+});
+
+/***/ }),
+/* 3 */
 /***/ (function(module, exports) {
 
 // this module is a runtime utility for cleaner component module output and will
@@ -142,26 +179,29 @@ module.exports = function normalizeComponent (
 
 
 /***/ }),
-/* 3 */
+/* 4 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__AlertComponent__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__AlertComponent__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__AlertComponent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__AlertComponent__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils_merge__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils_merge__ = __webpack_require__(2);
 
 
 
 
 var instance = void 0;
 
+var globalConfig = void 0;
+
 var AlertConstructor = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.extend(__WEBPACK_IMPORTED_MODULE_1__AlertComponent___default.a);
 
 var initInstance = function initInstance() {
     instance = new AlertConstructor({
-        el: document.createElement('div')
+        el: document.createElement('div'),
+        replace: true
     });
     document.body.appendChild(instance.$el);
 };
@@ -169,20 +209,16 @@ var initInstance = function initInstance() {
 var Alert = function Alert(content) {
     var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
 
-
     if (!instance) {
         initInstance();
     }
-
     options.content = content;
 
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_merge__["a" /* default */])(instance.$data, options);
-    // for (var key in instance.$data) {
-    // 	instance.$data[key] = options[key] ? options[key] : instance.$data[key]
-    // }
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_merge__["a" /* default */])(instance.$data, globalConfig);
 
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_merge__["a" /* default */])(instance.$data, options);
     return new Promise(function (resolve, reject) {
-        instance.showAlert = true;
+        instance.show = true;
         var success = instance.success;
         instance.success = function () {
             success();
@@ -191,23 +227,32 @@ var Alert = function Alert(content) {
     });
 };
 
-/* harmony default export */ __webpack_exports__["a"] = (Alert);
+/* harmony default export */ __webpack_exports__["a"] = ({
+    install: function install(Vue) {
+        var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+
+        globalConfig = options;
+        Vue.prototype.$alert = Alert;
+    }
+});
 
 /***/ }),
-/* 4 */
+/* 5 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ConfirmComponent__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ConfirmComponent__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ConfirmComponent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__ConfirmComponent__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils_merge__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils_merge__ = __webpack_require__(2);
 
 
 
 
 var instance = void 0;
+
+var globalConfig = {};
 
 var ConfirmConstructor = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.extend(__WEBPACK_IMPORTED_MODULE_1__ConfirmComponent___default.a);
 
@@ -225,12 +270,17 @@ var Confirm = function Confirm(content) {
         initInstance();
     }
     options.content = content;
+
+    // 将全局的 confirm 配置 合并到默认值中
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_merge__["a" /* default */])(instance.$data, globalConfig);
+    // 将单个 confirm instance 的配置合并到默认值中
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_merge__["a" /* default */])(instance.$data, options);
 
     return new Promise(function (resolve, reject) {
-        instance.showConfirm = true;
+        instance.show = true;
         var success = instance.success;
         var cancel = instance.cancel;
+        // event
         instance.success = function () {
             success();
             resolve(true);
@@ -241,18 +291,25 @@ var Confirm = function Confirm(content) {
         };
     });
 };
-/* harmony default export */ __webpack_exports__["a"] = (Confirm);
+/* harmony default export */ __webpack_exports__["a"] = ({
+    install: function install(Vue) {
+        var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+
+        globalConfig = options;
+        Vue.prototype.$confirm = Confirm;
+    }
+});
 
 /***/ }),
-/* 5 */
+/* 6 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ToastComponent__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ToastComponent__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ToastComponent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__ToastComponent__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils_merge__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils_merge__ = __webpack_require__(2);
 
 
 
@@ -287,30 +344,36 @@ var Toast = function Toast(content) {
     // 如果正在显示, 不响应点击
     if (!showing) {
         showing = true;
-        instance.showToast = true;
+        instance.show = true;
 
         // 这里没有算动画的执行时间, 只是添加了动画效果, 并且是默认具有动画效果
         setTimeout(function () {
             showing = false;
-            instance.showToast = false;
+            instance.show = false;
         }, duration);
     }
 };
+/* harmony default export */ __webpack_exports__["a"] = ({
+    install: function install(Vue) {
+        var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
 
-/* harmony default export */ __webpack_exports__["a"] = (Toast);
+        Vue.prototype.$toast = Toast;
+    }
+});
 
 /***/ }),
-/* 6 */
+/* 7 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-/* 7 */
+/* 8 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins__ = __webpack_require__(1);
 //
 //
 //
@@ -328,10 +391,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
+    mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins__["a" /* default */]],
     data: function data() {
         return {
-            showAlert: true,
+            show: true,
             title: '提示',
             content: '',
             btnText: '确定'
@@ -340,50 +405,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     methods: {
         success: function success() {
-            this.showAlert = false;
-        }
-    }
-});
-
-/***/ }),
-/* 8 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    data: function data() {
-        return {
-            showConfirm: true,
-            title: '提示',
-            content: '',
-            yes: '确定',
-            no: '取消'
-        };
-    },
-
-    methods: {
-        success: function success() {
-            this.showConfirm = false;
-        },
-        cancel: function cancel() {
-            this.showConfirm = false;
+            this.show = false;
         }
     }
 });
@@ -394,6 +416,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins__ = __webpack_require__(1);
 //
 //
 //
@@ -409,60 +432,38 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-	data: function data() {
-		return {
-			showToast: true,
-			content: '',
-			position: 'bottom',
-			withImg: false
-		};
-	},
+    mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins__["a" /* default */]],
+    data: function data() {
+        return {
+            show: true,
+            title: '提示',
+            content: '',
+            yes: '确定',
+            no: '取消',
+            style: {
+                no: {
+                    color: '', // 字体颜色
+                    class: '' // 按钮的 class
+                },
+                yes: {
+                    color: '',
+                    class: ''
+                }
+            }
+        };
+    },
 
-	methods: {
-		afterLeave: function afterLeave() {
-			this.showToast = false;
-		}
-	}
+    methods: {
+        success: function success() {
+            this.show = false;
+        },
+        cancel: function cancel() {
+            this.show = false;
+        }
+    }
 });
 
 /***/ }),
@@ -471,43 +472,120 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_Alert__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_Confirm__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_Toast__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__css_plugin_css__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__css_plugin_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__css_plugin_css__);
-
-
-
-
-
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins__ = __webpack_require__(1);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-	install: function install(Vue) {
-		Vue.prototype.$alert = __WEBPACK_IMPORTED_MODULE_1__components_Alert__["a" /* default */];
-		Vue.prototype.$confirm = __WEBPACK_IMPORTED_MODULE_2__components_Confirm__["a" /* default */];
-		Vue.prototype.$toast = __WEBPACK_IMPORTED_MODULE_3__components_Toast__["a" /* default */];
+	mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins__["a" /* default */]],
+	data: function data() {
+		return {
+			show: true,
+			content: '',
+			position: 'bottom',
+			withImg: false
+		};
+	},
+
+	methods: {
+		afterLeave: function afterLeave() {
+			this.show = false;
+		}
 	}
 });
 
 /***/ }),
 /* 11 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_Alert__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_Confirm__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_Toast__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__css_plugin_css__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__css_plugin_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__css_plugin_css__);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Alert", function() { return __WEBPACK_IMPORTED_MODULE_1__components_Alert__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Confirm", function() { return __WEBPACK_IMPORTED_MODULE_2__components_Confirm__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Toast", function() { return __WEBPACK_IMPORTED_MODULE_3__components_Toast__["a"]; });
+
+
+
+
+
+
+
+
+
+/***/ }),
+/* 12 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Component = __webpack_require__(2)(
+var Component = __webpack_require__(3)(
   /* script */
-  __webpack_require__(7),
+  __webpack_require__(8),
   /* template */
-  __webpack_require__(16),
+  __webpack_require__(17),
   /* scopeId */
   null,
   /* cssModules */
@@ -534,14 +612,14 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 13 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Component = __webpack_require__(2)(
+var Component = __webpack_require__(3)(
   /* script */
-  __webpack_require__(8),
+  __webpack_require__(9),
   /* template */
-  __webpack_require__(15),
+  __webpack_require__(16),
   /* scopeId */
   null,
   /* cssModules */
@@ -568,18 +646,18 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 14 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
 /* styles */
-__webpack_require__(11)
+__webpack_require__(12)
 
-var Component = __webpack_require__(2)(
+var Component = __webpack_require__(3)(
   /* script */
-  __webpack_require__(9),
+  __webpack_require__(10),
   /* template */
-  __webpack_require__(17),
+  __webpack_require__(18),
   /* scopeId */
   "data-v-e1e38562",
   /* cssModules */
@@ -606,7 +684,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -614,8 +692,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     directives: [{
       name: "show",
       rawName: "v-show",
-      value: (_vm.showConfirm),
-      expression: "showConfirm"
+      value: (_vm.show),
+      expression: "show"
     }]
   }, [_c('div', {
     staticClass: "popup popup-in",
@@ -631,12 +709,20 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_vm._v(_vm._s(_vm.content))])]), _vm._v(" "), _c('div', {
     staticClass: "popup-buttons"
   }, [_c('span', {
-    staticClass: "popup-button popup-button-bold",
+    staticClass: "popup-button",
+    class: _vm.style.yes.class,
+    style: ({
+      'color': _vm.style.yes.color
+    }),
     on: {
       "click": _vm.success
     }
   }, [_vm._v(_vm._s(_vm.yes))]), _vm._v(" "), _c('span', {
     staticClass: "popup-button popup-button-bold",
+    class: _vm.style.no.class,
+    style: ({
+      'color': _vm.style.no.color
+    }),
     on: {
       "click": _vm.cancel
     }
@@ -656,7 +742,7 @@ if (false) {
 }
 
 /***/ }),
-/* 16 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -664,8 +750,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     directives: [{
       name: "show",
       rawName: "v-show",
-      value: (_vm.showAlert),
-      expression: "showAlert"
+      value: (_vm.show),
+      expression: "show"
     }]
   }, [_c('div', {
     staticClass: "popup popup-in",
@@ -701,7 +787,7 @@ if (false) {
 }
 
 /***/ }),
-/* 17 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -716,8 +802,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     directives: [{
       name: "show",
       rawName: "v-show",
-      value: (_vm.showToast),
-      expression: "showToast"
+      value: (_vm.show),
+      expression: "show"
     }],
     staticClass: "toast-container",
     class: _vm.position
