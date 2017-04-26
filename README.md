@@ -11,9 +11,9 @@ npm i wc-messagebox --save
 ## Quick Start
 ```javascript
 import {Alert, Confirm, Toast} from 'wc-messagebox'
-import 'wc-messagebox/dist/messagebox.css'
-Vue.use(Alert, {})...
-Vue.use(Confirm, {}) ...
+import 'wc-messagebox/style.css'
+Vue.use(Alert, options)
+Vue.use(Confirm, options)
 ```
 
 ## Usage
@@ -23,22 +23,24 @@ this.$alert(text, options)
 this.$toast(text, options)
 
 this.$confirm(text, options)
+
+参数说明
 options:{
 	title: '' // 标题
-	yes: // 确定按钮的文本
-	no: // 取消按钮的文本
+	yes:      // 确定按钮的文本
+	no:       // 取消按钮的文本
 	style: {
 		yes: {
 			color: // 确定按钮的文本颜色
-			class: // 期望应用在 确定按钮上面的 class, 给了一个默认的 popup-button-delete
+			class: // 期望应用在 确定按钮上面的 class(自行定义)
 		}
 	}
 }
 
 ```
 
-## Introduction
-1. 返回的是一个Promise, 所以可以 这样调用
+## Others
+1. 返回的是一个Promise, 所以支持方法链调用
 ```javascript
 this
 	.$confirm(text)
