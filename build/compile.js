@@ -27,7 +27,9 @@ rm(path.resolve(process.cwd() , name), err => {
             // 修改版本号
             modifyVersion();
 
+            // 不在打包之后的目录里面放置 README.md 文件
             cp('-R', src + '/*', target);
+            // cp('-R', './README.md');
 
             console.log();
             console.log(chalk.green.bold('> Compile Successed'));

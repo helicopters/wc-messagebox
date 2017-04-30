@@ -10,7 +10,7 @@ export default {
         	console.log('trigger popstate');
            	vm.show = false;
         }
-        window.onpageshow = function(){
+        window.onpagehide = function(){
         	console.log('trigger pageshow');
             vm.show = false;
         }

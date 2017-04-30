@@ -19,23 +19,23 @@ Vue.use(Confirm, options)
 ## Usage
 ```javascript
 this.$alert(text, options)
-
-this.$toast(text, options)
-
-this.$confirm(text, options)
-
-参数说明
-options:{
-	title: '' // 标题
-	yes:      // 确定按钮的文本
-	no:       // 取消按钮的文本
-	style: {
-		yes: {
-			color: // 确定按钮的文本颜色
-			class: // 期望应用在 确定按钮上面的 class(自行定义)
+options = {
+	title: '',
+	content: '',
+	contentStyle: {},
+	btn: {
+		text: '',
+		style: {
+			'backgroun-color': 'red',
+			'font-size': '20px',
+			'color': 'blue'
 		}
 	}
 }
+
+this.$confirm(text, options)
+
+this.$toast(text, options)
 
 ```
 
