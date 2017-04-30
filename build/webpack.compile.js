@@ -72,7 +72,7 @@ const config = {
         }]
     },
     plugins: [
-        new ExtractTextPlugin('style.css'),
+        // new ExtractTextPlugin('style.css'),
         new webpack.LoaderOptionsPlugin({
             minimize: true
         })   
