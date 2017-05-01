@@ -11,7 +11,7 @@ npm i wc-messagebox --save
 ## Quick Start
 ```javascript
 import {Alert, Confirm, Toast} from 'wc-messagebox'
-
+import 'wc-messagebox/style.css'
 Vue.use(Alert, options)
 Vue.use(Confirm, options)
 ```

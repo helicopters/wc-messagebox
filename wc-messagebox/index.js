@@ -90,7 +90,7 @@ module.exports = require("vue");
       console.log('trigger popstate');
       vm.show = false;
     };
-    window.onpageshow = function () {
+    window.onpagehide = function () {
       console.log('trigger pageshow');
       vm.show = false;
     };
@@ -194,14 +194,13 @@ module.exports = function normalizeComponent (
 
 let instance;
 
-let globalConfig;
+let globalConfig = {};
 
 let AlertConstructor = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.extend(__WEBPACK_IMPORTED_MODULE_1__AlertComponent___default.a);
 
 let initInstance = () => {
     instance = new AlertConstructor({
-        el: document.createElement('div'),
-        replace: true
+        el: document.createElement('div')
     });
     document.body.appendChild(instance.$el);
 };
@@ -212,19 +211,21 @@ let Alert = (content, options = {}) => {
     }
     options.content = content;
 
+    // 将全局的 Alert 配置 合并到默认值中
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_merge__["a" /* default */])(instance.$data, globalConfig);
-
+    // 将单个 Alert instance 的配置合并到默认值中
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_merge__["a" /* default */])(instance.$data, options);
+
     return new Promise((resolve, reject) => {
         instance.show = true;
         let success = instance.success;
+
         instance.success = () => {
             success();
-            resolve();
+            resolve('ok');
         };
     });
 };
-
 /* harmony default export */ __webpack_exports__["a"] = ({
     install(Vue, options = {}) {
         globalConfig = options;
@@ -384,9 +385,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     data() {
         return {
             show: true,
-            title: '提示',
+            title: '', // 默认无标题
             content: '',
-            btnText: '确定'
+            contentStyle: {},
+            btn: {
+                text: '确定',
+                // 设置样式
+                style: {}
+            }
         };
     },
     methods: {
@@ -427,17 +433,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             show: true,
             title: '提示',
             content: '',
-            yes: '确定',
-            no: '取消',
-            style: {
-                no: {
-                    color: '', // 字体颜色
-                    class: '' // 按钮的 class
-                },
-                yes: {
-                    color: '',
-                    class: ''
-                }
+            contentStyle: {},
+            yes: {
+                text: '确定',
+                style: {}
+            },
+            no: {
+                text: '取消',
+                style: {}
             }
         };
     },
@@ -663,7 +666,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "display": "block"
     }
   }, [_c('div', {
-    staticClass: "popup-inner"
+    staticClass: "popup-inner",
+    style: (_vm.contentStyle)
   }, [(_vm.title) ? _c('div', {
     staticClass: "popup-title"
   }, [_vm._v(_vm._s(_vm.title))]) : _vm._e(), _vm._v(" "), _c('div', {
@@ -671,11 +675,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_vm._v(_vm._s(_vm.content))])]), _vm._v(" "), _c('div', {
     staticClass: "popup-buttons"
   }, [_c('span', {
-    staticClass: "popup-button popup-button-bold",
+    staticClass: "popup-button",
+    style: (_vm.btn.style),
     on: {
       "click": _vm.success
     }
-  }, [_vm._v("\n                " + _vm._s(_vm.btnText) + "\n            ")])])]), _vm._v(" "), _c('div', {
+  }, [_vm._v("\n                " + _vm._s(_vm.btn.text) + "\n            ")])])]), _vm._v(" "), _c('div', {
     staticClass: "popup-backdrop active",
     staticStyle: {
       "display": "block"
@@ -701,7 +706,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "display": "block"
     }
   }, [_c('div', {
-    staticClass: "popup-inner"
+    staticClass: "popup-inner",
+    style: (_vm.contentStyle)
   }, [(_vm.title) ? _c('div', {
     staticClass: "popup-title"
   }, [_vm._v(_vm._s(_vm.title))]) : _vm._e(), _vm._v(" "), _c('div', {
@@ -710,23 +716,17 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "popup-buttons"
   }, [_c('span', {
     staticClass: "popup-button",
-    class: _vm.style.yes.class,
-    style: ({
-      'color': _vm.style.yes.color
-    }),
+    style: (_vm.yes.style),
     on: {
       "click": _vm.success
     }
-  }, [_vm._v(_vm._s(_vm.yes))]), _vm._v(" "), _c('span', {
-    staticClass: "popup-button popup-button-bold",
-    class: _vm.style.no.class,
-    style: ({
-      'color': _vm.style.no.color
-    }),
+  }, [_vm._v(_vm._s(_vm.yes.text))]), _vm._v(" "), _c('span', {
+    staticClass: "popup-button",
+    style: (_vm.no.style),
     on: {
       "click": _vm.cancel
     }
-  }, [_vm._v(_vm._s(_vm.no))])])]), _vm._v(" "), _c('div', {
+  }, [_vm._v(_vm._s(_vm.no.text))])])]), _vm._v(" "), _c('div', {
     staticClass: "popup-backdrop active",
     staticStyle: {
       "display": "block"
