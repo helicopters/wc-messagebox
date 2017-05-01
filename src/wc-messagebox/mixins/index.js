@@ -11,7 +11,7 @@ export default {
            	vm.show = false;
         }
         window.onpagehide = function(){
-        	console.log('trigger pageshow');
+        	console.log('trigger pagehide');
             vm.show = false;
         }
 	}

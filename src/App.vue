@@ -11,18 +11,22 @@
 
     	// Vue.component('hello', AlertConstructor)
 
-
+  // import Hello from './Hello'
   export default {
     name: 'app',
     mounted () {
     },
     methods: {
     	test () {
-    		this.$confirm('你好丫你好丫你好丫你好丫你好丫你好丫你好丫你好丫你好丫',{
+    		this.$toast('你好丫你好丫你好丫你好丫你好丫你好丫你好丫你好丫你好丫',{
+          // component: Hello
           // title:'',
           // btnText: "我擦碰",
           // container: '#app'
         })
+        // .then(()=>{
+        //   alert('你好')
+        // })
     	}
     }
   }

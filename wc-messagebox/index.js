@@ -91,7 +91,7 @@ module.exports = require("vue");
       vm.show = false;
     };
     window.onpagehide = function () {
-      console.log('trigger pageshow');
+      console.log('trigger pagehide');
       vm.show = false;
     };
   }
@@ -196,9 +196,8 @@ let instance;
 
 let globalConfig = {};
 
-let AlertConstructor = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.extend(__WEBPACK_IMPORTED_MODULE_1__AlertComponent___default.a);
-
 let initInstance = () => {
+    let AlertConstructor = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.extend(__WEBPACK_IMPORTED_MODULE_1__AlertComponent___default.a);
     instance = new AlertConstructor({
         el: document.createElement('div')
     });

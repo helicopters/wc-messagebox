@@ -6,9 +6,8 @@ let instance;
 
 let globalConfig = {};
 
-let AlertConstructor = Vue.extend(AlertComponent);
-
 let initInstance = ()=>{
+    let AlertConstructor = Vue.extend(AlertComponent);
     instance = new AlertConstructor({
         el: document.createElement('div')
     });
@@ -35,7 +34,6 @@ let Alert = (content, options={}) => {
             resolve('ok');
         }
     });
-
 }
 export default {
     install (Vue, options={}) {
