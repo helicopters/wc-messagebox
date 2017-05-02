@@ -59,8 +59,7 @@
 			return {
 				show: true,
 				content: '',
-				position: 'bottom',
-				withImg: false
+				position: 'bottom'
 			}
 		},
 		methods: {

@@ -20,7 +20,7 @@
         data () {
             return {
                 show: true,
-                title: '提示',
+                title: '',
                 content: '',
                 contentStyle: {},
                 yes: {

@@ -1,33 +1,33 @@
 <template>
   <div id="app">
-  	<button @click="test">点击</button>
-  	<!-- <hello/> -->
+  	<button @click="alert">Alert</button>
+    <button @click="confirm">Confirm</button>
+    <button @click="toast">Toast</button>
   </div>
 </template>
 <script>
   import Vue from 'vue'
-
-    	// document.body.appendChild(instance.$el);
-
-    	// Vue.component('hello', AlertConstructor)
-
-  // import Hello from './Hello'
   export default {
     name: 'app',
-    mounted () {
-    },
     methods: {
-    	test () {
-    		this.$toast('你好丫你好丫你好丫你好丫你好丫你好丫你好丫你好丫你好丫',{
-          // component: Hello
-          // title:'',
-          // btnText: "我擦碰",
-          // container: '#app'
-        })
-        // .then(()=>{
-        //   alert('你好')
-        // })
-    	}
+      alert () {
+        this.$alert('欢迎使用 wc-messagebox', 'hello')
+          .then(()=>{
+            this.$toast('你点击了确定');
+          })
+      },
+      confirm () {
+        this.$confirm('欢迎使用 wc-messagebox')
+          .then(()=>{
+            this.$toast('你点击了确定');
+          })
+          .catch(()=>{
+            this.$toast('你点击了取消');
+          })
+      },
+      toast () {
+        this.$toast('欢迎使用 wc-messagebox');
+      }
     }
   }
 </script>

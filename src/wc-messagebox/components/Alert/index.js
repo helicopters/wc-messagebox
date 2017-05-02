@@ -6,19 +6,19 @@ let instance;
 
 let globalConfig = {};
 
+let AlertConstructor = Vue.extend(AlertComponent);
+
 let initInstance = ()=>{
-    let AlertConstructor = Vue.extend(AlertComponent);
     instance = new AlertConstructor({
         el: document.createElement('div')
     });
     document.body.appendChild(instance.$el);
 }
 
-let Alert = (content, options={}) => {
+let Alert = (content, options = {}) => {
     if (!instance) {
         initInstance();
     }
-    options.content = content;
 
     // 将全局的 Alert 配置 合并到默认值中
     merge(instance.$data, globalConfig);

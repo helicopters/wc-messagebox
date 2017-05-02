@@ -2,11 +2,13 @@ import Vue from 'vue'
 import ToastComponent from './ToastComponent'
 import merge from '../../utils/merge'
 
-let instance, duration;
+const DEFAULT_DURATION =  1500;
+
+let instance;
+
+let globalConfig;
 
 let showing = false;
-
-const DEFAULT_DURATION =  1500;
 
 let ToastConstructor = Vue.extend(ToastComponent);
 
@@ -21,9 +23,10 @@ let Toast = (content, options={})=>{
     if (!instance) {
         initInstance();
     }
-
-    duration = options.duration || DEFAULT_DURATION;
     options.content = content;
+
+    merge(instance.$data, globalConfig);
+
     merge(instance.$data, options);
 
     // 如果正在显示, 不响应点击
@@ -35,12 +38,13 @@ let Toast = (content, options={})=>{
         setTimeout(()=>{
             showing = false;
             instance.show = false;  
-        }, duration);
+        }, globalConfig.duration || DEFAULT_DURATION);
 
     }
 }
 export default {
     install (Vue, options={}) {
+        globalConfig = options;
         Vue.prototype.$toast = Toast;
     }
 };

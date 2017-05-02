@@ -13,7 +13,9 @@ Vue.use(Alert, {
 Vue.use(Confirm, {
 	// yes: '知道了'
 });
-Vue.use(Toast)
+Vue.use(Toast, {
+	duration: '1500'
+})
 
 var vm = Vue.extend({
 	template: '<App/>'
