@@ -1,18 +1,15 @@
-// 暂时的, 以后有更好的方法再做修改
+// fix 路由切换时弹窗不消失的 bug
 export default {
 	mounted () {
 		let vm = this;
-        window.addEventListener('hashchange', function(e) {
-        	console.log('trigger hashchange');
+        window.addEventListener('hashchange', function() {
         	vm.show = false;
         }, false);
-        window.onpopstate = function(){
-        	console.log('trigger popstate');
-           	vm.show = false;
-        }
-        window.onpagehide = function(){
-        	console.log('trigger pagehide');
+        window.addEventListener('popstate', function(){
             vm.show = false;
-        }
+        }, false);
+        window.addEventListener('pagehide', function(){
+            vm.show = false;
+        }, false);
 	}
 }

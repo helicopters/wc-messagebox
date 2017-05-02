@@ -20,6 +20,7 @@ let Alert = (content, options = {}) => {
         initInstance();
     }
 
+    options.content = content;
     // 将全局的 Alert 配置 合并到默认值中
     merge(instance.$data, globalConfig);
     // 将单个 Alert instance 的配置合并到默认值中

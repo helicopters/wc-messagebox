@@ -11,9 +11,9 @@
     name: 'app',
     methods: {
       alert () {
-        this.$alert('欢迎使用 wc-messagebox', 'hello')
+        this.$alert('欢迎使用 wc-messagebox1')
           .then(()=>{
-            this.$toast('你点击了确定');
+            this.$toast('你点击了确定1');
           })
       },
       confirm () {
