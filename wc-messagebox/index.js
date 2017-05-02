@@ -196,8 +196,9 @@ let instance;
 
 let globalConfig = {};
 
+let AlertConstructor = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.extend(__WEBPACK_IMPORTED_MODULE_1__AlertComponent___default.a);
+
 let initInstance = () => {
-    let AlertConstructor = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.extend(__WEBPACK_IMPORTED_MODULE_1__AlertComponent___default.a);
     instance = new AlertConstructor({
         el: document.createElement('div')
     });
@@ -208,7 +209,6 @@ let Alert = (content, options = {}) => {
     if (!instance) {
         initInstance();
     }
-    options.content = content;
 
     // 将全局的 Alert 配置 合并到默认值中
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_merge__["a" /* default */])(instance.$data, globalConfig);
@@ -306,11 +306,13 @@ let Confirm = (content, options = {}) => {
 
 
 
-let instance, duration;
+const DEFAULT_DURATION = 1500;
+
+let instance;
+
+let globalConfig;
 
 let showing = false;
-
-const DEFAULT_DURATION = 1500;
 
 let ToastConstructor = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.extend(__WEBPACK_IMPORTED_MODULE_1__ToastComponent___default.a);
 
@@ -325,9 +327,10 @@ let Toast = (content, options = {}) => {
     if (!instance) {
         initInstance();
     }
-
-    duration = options.duration || DEFAULT_DURATION;
     options.content = content;
+
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_merge__["a" /* default */])(instance.$data, globalConfig);
+
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_merge__["a" /* default */])(instance.$data, options);
 
     // 如果正在显示, 不响应点击
@@ -339,11 +342,12 @@ let Toast = (content, options = {}) => {
         setTimeout(() => {
             showing = false;
             instance.show = false;
-        }, duration);
+        }, globalConfig.duration || DEFAULT_DURATION);
     }
 };
 /* harmony default export */ __webpack_exports__["a"] = ({
     install(Vue, options = {}) {
+        globalConfig = options;
         Vue.prototype.$toast = Toast;
     }
 });
@@ -430,7 +434,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     data() {
         return {
             show: true,
-            title: '提示',
+            title: '',
             content: '',
             contentStyle: {},
             yes: {
@@ -521,8 +525,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		return {
 			show: true,
 			content: '',
-			position: 'bottom',
-			withImg: false
+			position: 'bottom'
 		};
 	},
 	methods: {
