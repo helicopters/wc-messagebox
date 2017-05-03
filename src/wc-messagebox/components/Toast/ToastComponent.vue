@@ -57,7 +57,7 @@
         mixins: [pageChange],
 		data () {
 			return {
-				show: true,
+				show: false,
 				content: '',
 				position: 'bottom'
 			}

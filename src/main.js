@@ -14,7 +14,7 @@ Vue.use(Confirm, {
 	// yes: '知道了'
 });
 Vue.use(Toast, {
-	duration: '1500'
+	duration: '6500'
 })
 
 var vm = Vue.extend({

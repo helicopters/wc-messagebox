@@ -23,6 +23,7 @@ let Toast = (content, options={})=>{
     if (!instance) {
         initInstance();
     }
+    
     options.content = content;
 
     merge(instance.$data, globalConfig);
