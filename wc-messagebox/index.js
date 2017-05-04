@@ -78,23 +78,20 @@ module.exports = require("vue");
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-// 暂时的, 以后有更好的方法再做修改
+// fix 路由切换时弹窗不消失的 bug
 /* harmony default export */ __webpack_exports__["a"] = ({
-  mounted() {
-    let vm = this;
-    window.addEventListener('hashchange', function (e) {
-      console.log('trigger hashchange');
-      vm.show = false;
-    }, false);
-    window.onpopstate = function () {
-      console.log('trigger popstate');
-      vm.show = false;
-    };
-    window.onpagehide = function () {
-      console.log('trigger pagehide');
-      vm.show = false;
-    };
-  }
+    mounted: function mounted() {
+        var vm = this;
+        window.addEventListener('hashchange', function () {
+            vm.show = false;
+        }, false);
+        window.addEventListener('popstate', function () {
+            vm.show = false;
+        }, false);
+        window.addEventListener('pagehide', function () {
+            vm.show = false;
+        }, false);
+    }
 });
 
 /***/ }),
@@ -108,15 +105,15 @@ module.exports = require("vue");
 	所以增加一个判断: 只要用户配置存在某个字段且不等于 undefined, 那么就使用
 	用户提供的字段值
 */
-var isExists = val => {
+var isExists = function isExists(val) {
 	if (typeof val !== 'undefined') {
 		return true;
 	}
 	return false;
 };
 
-/* harmony default export */ __webpack_exports__["a"] = ((src, target) => {
-	for (let key in target) {
+/* harmony default export */ __webpack_exports__["a"] = (function (src, target) {
+	for (var key in target) {
 		src[key] = isExists(target[key]) ? target[key] : src[key];
 	}
 });
@@ -192,41 +189,46 @@ module.exports = function normalizeComponent (
 
 
 
-let instance;
+var instance = void 0;
 
-let globalConfig = {};
+var globalConfig = {};
 
-let AlertConstructor = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.extend(__WEBPACK_IMPORTED_MODULE_1__AlertComponent___default.a);
+var AlertConstructor = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.extend(__WEBPACK_IMPORTED_MODULE_1__AlertComponent___default.a);
 
-let initInstance = () => {
+var initInstance = function initInstance() {
     instance = new AlertConstructor({
         el: document.createElement('div')
     });
     document.body.appendChild(instance.$el);
 };
 
-let Alert = (content, options = {}) => {
+var Alert = function Alert(content) {
+    var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+
     if (!instance) {
         initInstance();
     }
 
+    options.content = content;
     // 将全局的 Alert 配置 合并到默认值中
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_merge__["a" /* default */])(instance.$data, globalConfig);
     // 将单个 Alert instance 的配置合并到默认值中
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_merge__["a" /* default */])(instance.$data, options);
 
-    return new Promise((resolve, reject) => {
+    return new Promise(function (resolve, reject) {
         instance.show = true;
-        let success = instance.success;
+        var success = instance.success;
 
-        instance.success = () => {
+        instance.success = function () {
             success();
             resolve('ok');
         };
     });
 };
 /* harmony default export */ __webpack_exports__["a"] = ({
-    install(Vue, options = {}) {
+    install: function install(Vue) {
+        var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+
         globalConfig = options;
         Vue.prototype.$alert = Alert;
     }
@@ -246,20 +248,22 @@ let Alert = (content, options = {}) => {
 
 
 
-let instance;
+var instance = void 0;
 
-let globalConfig = {};
+var globalConfig = {};
 
-let ConfirmConstructor = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.extend(__WEBPACK_IMPORTED_MODULE_1__ConfirmComponent___default.a);
+var ConfirmConstructor = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.extend(__WEBPACK_IMPORTED_MODULE_1__ConfirmComponent___default.a);
 
-let initInstance = () => {
+var initInstance = function initInstance() {
     instance = new ConfirmConstructor({
         el: document.createElement('div')
     });
     document.body.appendChild(instance.$el);
 };
 
-let Confirm = (content, options = {}) => {
+var Confirm = function Confirm(content) {
+    var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+
     if (!instance) {
         initInstance();
     }
@@ -270,23 +274,25 @@ let Confirm = (content, options = {}) => {
     // 将单个 confirm instance 的配置合并到默认值中
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_merge__["a" /* default */])(instance.$data, options);
 
-    return new Promise((resolve, reject) => {
+    return new Promise(function (resolve, reject) {
         instance.show = true;
-        let success = instance.success;
-        let cancel = instance.cancel;
+        var success = instance.success;
+        var cancel = instance.cancel;
         // event
-        instance.success = () => {
+        instance.success = function () {
             success();
             resolve(true);
         };
-        instance.cancel = () => {
+        instance.cancel = function () {
             cancel();
             reject(false);
         };
     });
 };
 /* harmony default export */ __webpack_exports__["a"] = ({
-    install(Vue, options = {}) {
+    install: function install(Vue) {
+        var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+
         globalConfig = options;
         Vue.prototype.$confirm = Confirm;
     }
@@ -306,27 +312,30 @@ let Confirm = (content, options = {}) => {
 
 
 
-const DEFAULT_DURATION = 1500;
+var DEFAULT_DURATION = 1500;
 
-let instance;
+var instance = void 0;
 
-let globalConfig;
+var globalConfig = void 0;
 
-let showing = false;
+var showing = false;
 
-let ToastConstructor = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.extend(__WEBPACK_IMPORTED_MODULE_1__ToastComponent___default.a);
+var ToastConstructor = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.extend(__WEBPACK_IMPORTED_MODULE_1__ToastComponent___default.a);
 
-let initInstance = () => {
+var initInstance = function initInstance() {
     instance = new ToastConstructor({
         el: document.createElement('div')
     });
     document.body.appendChild(instance.$el);
 };
 
-let Toast = (content, options = {}) => {
+var Toast = function Toast(content) {
+    var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+
     if (!instance) {
         initInstance();
     }
+
     options.content = content;
 
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_merge__["a" /* default */])(instance.$data, globalConfig);
@@ -339,14 +348,16 @@ let Toast = (content, options = {}) => {
         instance.show = true;
 
         // 这里没有算动画的执行时间, 只是添加了动画效果, 并且是默认具有动画效果
-        setTimeout(() => {
+        setTimeout(function () {
             showing = false;
             instance.show = false;
         }, globalConfig.duration || DEFAULT_DURATION);
     }
 };
 /* harmony default export */ __webpack_exports__["a"] = ({
-    install(Vue, options = {}) {
+    install: function install(Vue) {
+        var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+
         globalConfig = options;
         Vue.prototype.$toast = Toast;
     }
@@ -385,7 +396,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins__["a" /* default */]],
-    data() {
+    data: function data() {
         return {
             show: true,
             title: '', // 默认无标题
@@ -398,8 +409,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }
         };
     },
+
     methods: {
-        success() {
+        success: function success() {
             this.show = false;
         }
     }
@@ -431,7 +443,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins__["a" /* default */]],
-    data() {
+    data: function data() {
         return {
             show: true,
             title: '',
@@ -447,11 +459,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }
         };
     },
+
     methods: {
-        success() {
+        success: function success() {
             this.show = false;
         },
-        cancel() {
+        cancel: function cancel() {
             this.show = false;
         }
     }
@@ -521,15 +534,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 	mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins__["a" /* default */]],
-	data() {
+	data: function data() {
 		return {
-			show: true,
+			show: false,
 			content: '',
 			position: 'bottom'
 		};
 	},
+
 	methods: {
-		afterLeave() {
+		afterLeave: function afterLeave() {
 			this.show = false;
 		}
 	}
