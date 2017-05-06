@@ -17,7 +17,7 @@ let initInstance = ()=>{
 
 let Alert = (content, options = {}) => {
     if (!instance) {
-        initInstance();
+        initInstance();        
     }
 
     options.content = content;
@@ -25,7 +25,7 @@ let Alert = (content, options = {}) => {
     merge(instance.$data, globalConfig);
     // 将单个 Alert instance 的配置合并到默认值中
     merge(instance.$data, options);
-
+    
     return new Promise((resolve, reject)=>{
         instance.show = true;
         let success = instance.success;

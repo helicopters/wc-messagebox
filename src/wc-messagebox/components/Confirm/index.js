@@ -33,11 +33,11 @@ let Confirm = (content, options={}) => {
         // event
         instance.success = () => {
             success();
-            resolve(true);
+            resolve('ok');
         }
         instance.cancel = () => {
             cancel();
-            reject(false);
+            reject('cancel');
         }
     });
 

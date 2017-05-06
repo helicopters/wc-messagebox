@@ -30,14 +30,14 @@ const config = {
     module: {
         rules: [{
             test: /\.css$/,
-            use: ExtractTextPlugin.extract({
+            // use: ExtractTextPlugin.extract({
                 use: 'css-loader?minimize!postcss-loader'
-            })
+            // })
         }, {
             test: /\.less$/,
-            use: ExtractTextPlugin.extract({
+            // use: ExtractTextPlugin.extract({
                 use: 'css-loader?minimize!postcss-loader!less-loader'
-            })
+            // })
         }, {
             test: /\.js$/,
             loader: 'babel-loader',
@@ -47,12 +47,18 @@ const config = {
             loader: 'vue-loader',
             options: {
                 loaders: {
-                    css: ExtractTextPlugin.extract({
-                        use: 'css-loader?minimize',
-                    }),
-                    less: ExtractTextPlugin.extract({
-                        use: 'css-loader?minimize!postcss-loader!less-loader',
-                    })
+                    // css: ExtractTextPlugin.extract({
+                    //     use: 'css-loader?minimize',
+                    // }),
+
+                    // less: ExtractTextPlugin.extract({
+                    //     use: 'css-loader?minimize!postcss-loader!less-loader',
+                    // })
+                    css:'css-loader?minimize',
+                    
+                    less: 'css-loader?minimize!postcss-loader!less-loader'
+
+
                 }
             }
         }, {
@@ -72,7 +78,7 @@ const config = {
         }]
     },
     plugins: [
-        new ExtractTextPlugin('style.css'),
+        // new ExtractTextPlugin('style.css'),
         new webpack.LoaderOptionsPlugin({
             minimize: true
         })   

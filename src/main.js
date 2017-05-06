@@ -4,8 +4,6 @@ import App from './App'
 
 import {Alert, Confirm, Toast} from './wc-messagebox'
 
-import AlertComponent from './wc-messagebox/components/Alert/AlertComponent'
-
 
 Vue.use(Alert, {
 	btnText: '好的'

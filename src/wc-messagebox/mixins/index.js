@@ -1,15 +1,11 @@
 // fix 路由切换时弹窗不消失的 bug
 export default {
 	mounted () {
-		let vm = this;
-        window.addEventListener('hashchange', function() {
-        	vm.show = false;
-        }, false);
-        window.addEventListener('popstate', function(){
-            vm.show = false;
-        }, false);
-        window.addEventListener('pagehide', function(){
-            vm.show = false;
-        }, false);
+        let listener = () => {
+            this.show = false;
+        }
+        window.addEventListener('hashchange', listener);
+        window.addEventListener('popstate', listener);
+        window.addEventListener('pagehide', listener);
 	}
 }

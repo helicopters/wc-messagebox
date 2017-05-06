@@ -1,4 +1,4 @@
-<style scoped lang="less">
+<style lang="less" scoped>
 	.toast-container {
 		position: fixed;
 		z-index: 9999;
@@ -44,7 +44,7 @@
 </style>
 <template>
 	<transition name="fade" @after-leave="afterLeave">
-		<div class="toast-container" :class="position"v-show="show">
+		<div class="toast-container" :class="position" v-show="show">
 			<div class="toast-message">
 				{{content}}
 			</div>
