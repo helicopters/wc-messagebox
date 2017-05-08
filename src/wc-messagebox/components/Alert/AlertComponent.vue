@@ -1,4 +1,4 @@
-<style lang="less" scoped>
+<style scoped lang="less">
 .popup {
     position: fixed;
     z-index: 10000;

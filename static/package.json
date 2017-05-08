@@ -1,6 +1,6 @@
 {
     "name": "wc-messagebox",
-    "version": "1.4.2",
+    "version": "1.4.4",
     "description": "Vue plugins | alert | confirm | toast",
     "main": "index.js",
     "keywords": [
