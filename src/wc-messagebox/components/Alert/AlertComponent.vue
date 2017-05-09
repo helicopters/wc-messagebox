@@ -140,7 +140,7 @@
 <template>
     <div v-show="show">
         <div class="popup popup-in" style="display: block;">
-            <div class="popup-inner" :style="contentStyle">
+            <div class="popup-inner">
                 <div class="popup-title" v-if="title">{{title}}</div>
                 <div class="popup-text">{{content}}</div>
             </div>
@@ -162,8 +162,8 @@
                 show: true,
                 title: '',  // 默认无标题
                 content: '',
-                contentStyle: {
-                },
+                // contentStyle: {
+                // },
                 btn: {
                     text: '确定',
                     // 设置样式

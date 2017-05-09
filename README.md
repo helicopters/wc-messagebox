@@ -1,7 +1,7 @@
 ## wc-messagebox
 * 基于 vue 2.0 开发的插件
 * 包含 Alert, Confirm, Toast
-* 仿照 iOS 原生UI(使用 MUI 样式)
+* 仿照 iOS 原生UI(样式来源: MUI)
 
 ## Install
 ```shell
@@ -14,16 +14,14 @@ import {Alert, Confirm, Toast} from 'wc-messagebox'
 import 'wc-messagebox/style.css'
 Vue.use(Alert, options)
 Vue.use(Confirm, options)
-Vue.use(Toast)
+Vue.use(Toast, options)
 ```
 
 ## Usage
 ```javascript
 this.$alert(text, options)
 options = {
-	title: '',
-	content: '',
-	contentStyle: {},
+	title: '',  // 默认无标题
 	btn: {
 		text: '',
 		style: {
@@ -36,9 +34,7 @@ options = {
 
 this.$confirm(text, options)
 options = {
-    title: '',
-    content: '',
-    contentStyle: {},
+    title: '', // 默认无标题
     yes: {
         text: '确定',
         style: {}
@@ -67,11 +63,11 @@ this.$confirm(text)
 ## 问题
 1. Toast 当 duration 设置成 1ms 的时候, 再次点击会不响应
 
-3. Alert, Confirm 不支持多个 content 的情况, 类似于这样
-	this.$alert(1,2,3) 所以这个玩意, 可以改, 但是暂时不改.
+3. Alert, Confirm 不支持多个 content 的情况, 如
+	   this.$alert(1,2,3)
 
 4. 我本想让alert可以像原生的 alert 一样, 在多个连续调用的时候可以依次展开
-   但是最后发现还是不可以, 这个玩意我研究了三个小时, 没有找到合适的方法.
+   不可以
 5. 我看了很多弹窗都会提及到一个 层级的问题, 但是目前没有发现我的存在这个问题撒。
    因为我的弹窗, 只要第二个出现, 第一个会自动消失, 不存在同时存在多个弹窗的情况.(单例)
 
@@ -81,9 +77,6 @@ this.$confirm(text)
    这种方式的话, 就需要弹窗出现的时候, 加一个 hash 在页面上面, 引入 hash 又会出现问题
    比如一个页面 alert 一下, comfirm 一下, 此时再返回, 实际上是会回到 alert 写入的 hash 中
    所以暂时没有一种好的办法, 去解决这个问题. 
-
-2. 我们现在的样式引入, 是通过 import 'wc-messagebox/style.css' 引入的, 但是这种方式, 会污染
-   项目中自己写的样式, 所以, 我决定把样式内联.
 
 
 

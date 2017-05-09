@@ -541,7 +541,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             show: true,
             title: '', // 默认无标题
             content: '',
-            contentStyle: {},
+            // contentStyle: {
+            // },
             btn: {
                 text: '确定',
                 // 设置样式
@@ -727,7 +728,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             show: true,
             title: '',
             content: '',
-            contentStyle: {},
             yes: {
                 text: '确定',
                 style: {}
@@ -977,8 +977,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "display": "block"
     }
   }, [_c('div', {
-    staticClass: "popup-inner",
-    style: (_vm.contentStyle)
+    staticClass: "popup-inner"
   }, [(_vm.title) ? _c('div', {
     staticClass: "popup-title"
   }, [_vm._v(_vm._s(_vm.title))]) : _vm._e(), _vm._v(" "), _c('div', {
@@ -1017,8 +1016,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "display": "block"
     }
   }, [_c('div', {
-    staticClass: "popup-inner",
-    style: (_vm.contentStyle)
+    staticClass: "popup-inner"
   }, [(_vm.title) ? _c('div', {
     staticClass: "popup-title"
   }, [_vm._v(_vm._s(_vm.title))]) : _vm._e(), _vm._v(" "), _c('div', {

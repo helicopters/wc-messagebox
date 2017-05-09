@@ -140,7 +140,7 @@
 <template>
     <div v-show="show">
         <div class="popup popup-in" style="display: block;">
-            <div class="popup-inner" :style="contentStyle">
+            <div class="popup-inner">
                 <div class="popup-title" v-if="title">{{title}}</div>
                 <div class="popup-text">{{content}}</div>
             </div>
@@ -161,7 +161,6 @@
                 show: true,
                 title: '',
                 content: '',
-                contentStyle: {},
                 yes: {
                     text: '确定',
                     style: {}

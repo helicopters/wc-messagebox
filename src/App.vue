@@ -11,10 +11,17 @@
     name: 'app',
     methods: {
       alert () {
-        this.$alert('欢迎使用 wc-messagebox1')
-          .then(()=>{
-            this.$toast('你点击了确定1');
-          })
+        this.$alert('欢迎使用 wc-messagebox', {
+          btn: {
+            text: '定制按钮文本和颜色',
+            style: {
+              'color': 'red'
+            }
+          }
+        })
+        .then(()=>{
+          this.$toast('你点击了确定');
+        })
       },
       confirm () {
         this.$confirm('欢迎使用 wc-messagebox')
