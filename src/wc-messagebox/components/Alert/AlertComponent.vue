@@ -162,8 +162,6 @@
                 show: true,
                 title: '',  // 默认无标题
                 content: '',
-                // contentStyle: {
-                // },
                 btn: {
                     text: '确定',
                     // 设置样式

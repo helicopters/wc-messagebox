@@ -191,6 +191,8 @@ var instance = void 0;
 
 var globalConfig = {};
 
+var _initData = {}; // 存储组件初始化的数据
+
 var AlertConstructor = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.extend(__WEBPACK_IMPORTED_MODULE_1__AlertComponent___default.a);
 
 var initInstance = function initInstance() {
@@ -198,6 +200,8 @@ var initInstance = function initInstance() {
         el: document.createElement('div')
     });
     document.body.appendChild(instance.$el);
+
+    _initData = Object.assign({}, instance.$data);
 };
 
 var Alert = function Alert(content) {
@@ -206,6 +210,9 @@ var Alert = function Alert(content) {
     if (!instance) {
         initInstance();
     }
+
+    // 恢复之前的数据
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_merge__["a" /* default */])(instance.$data, _initData);
 
     options.content = content;
     // 将全局的 Alert 配置 合并到默认值中
@@ -250,12 +257,15 @@ var instance = void 0;
 
 var globalConfig = {};
 
+var _initData = {};
+
 var ConfirmConstructor = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.extend(__WEBPACK_IMPORTED_MODULE_1__ConfirmComponent___default.a);
 
 var initInstance = function initInstance() {
     instance = new ConfirmConstructor({
         el: document.createElement('div')
     });
+    _initData = Object.assign({}, instance.$data);
     document.body.appendChild(instance.$el);
 };
 
@@ -265,6 +275,10 @@ var Confirm = function Confirm(content) {
     if (!instance) {
         initInstance();
     }
+
+    // 恢复默认设置
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_merge__["a" /* default */])(instance.$data, _initData);
+
     options.content = content;
 
     // 将全局的 confirm 配置 合并到默认值中
@@ -541,8 +555,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             show: true,
             title: '', // 默认无标题
             content: '',
-            // contentStyle: {
-            // },
             btn: {
                 text: '确定',
                 // 设置样式

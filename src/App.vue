@@ -1,7 +1,9 @@
 <template>
   <div id="app">
   	<button @click="alert">Alert</button>
+    <button @click="alert2">Alert2</button>
     <button @click="confirm">Confirm</button>
+    <button @click="confirm2">Confirm2</button>
     <button @click="toast">Toast</button>
   </div>
 </template>
@@ -23,7 +25,34 @@
           this.$toast('你点击了确定');
         })
       },
+      alert2 () {
+        this.$alert('欢迎使用 wc-messagebox', {
+          btn: {
+            text: '我依旧是原来的值',
+            style: {
+              'color': 'red'
+            }
+          }
+        })
+        .then(()=>{
+          this.$toast('你点击了确定');
+        })
+      },
+
       confirm () {
+        this.$confirm('欢迎使用 wc-messagebox', {
+          yes: {
+            text: '新按钮'
+          }
+        })
+          .then(()=>{
+            this.$toast('你点击了确定');
+          })
+          .catch(()=>{
+            this.$toast('你点击了取消');
+          })
+      },
+      confirm2 () {
         this.$confirm('欢迎使用 wc-messagebox')
           .then(()=>{
             this.$toast('你点击了确定');
@@ -32,6 +61,8 @@
             this.$toast('你点击了取消');
           })
       },
+
+
       toast () {
         this.$toast('欢迎使用 wc-messagebox');
       }
