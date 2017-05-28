@@ -6,8 +6,6 @@ let instance;
 
 let globalConfig = {};
 
-let _initData = {}; // 存储组件初始化的数据
-
 let AlertConstructor = Vue.extend(AlertComponent);
 
 let initInstance = ()=>{
@@ -15,17 +13,10 @@ let initInstance = ()=>{
         el: document.createElement('div')
     });
     document.body.appendChild(instance.$el);
-
-    _initData = Object.assign({}, instance.$data);
 }
 
 let Alert = (content, options = {}) => {
-    if (!instance) {
-        initInstance();        
-    }
-
-    // 恢复之前的数据
-    merge(instance.$data, _initData);
+    initInstance();        
 
     options.content = content;
     // 将全局的 Alert 配置 合并到默认值中

@@ -138,7 +138,7 @@
 }    
 </style>
 <template>
-    <div v-show="show">
+    <div v-if="show">
         <div class="popup popup-in" style="display: block;">
             <div class="popup-inner">
                 <div class="popup-title" v-if="title">{{title}}</div>

@@ -6,7 +6,7 @@ let instance;
 
 let globalConfig = {};
 
-let _initData = {};
+// let _initData = {};
 
 let ConfirmConstructor = Vue.extend(ConfirmComponent);
 
@@ -14,17 +14,11 @@ let initInstance = ()=>{
     instance = new ConfirmConstructor({
         el: document.createElement('div')
     });
-    _initData = Object.assign({}, instance.$data);
     document.body.appendChild(instance.$el);
 }
 
 let Confirm = (content, options={}) => {
-    if (!instance) {
-        initInstance();
-    }
-
-    // 恢复默认设置
-    merge(instance.$data, _initData);
+    initInstance();
 
     options.content = content;
 

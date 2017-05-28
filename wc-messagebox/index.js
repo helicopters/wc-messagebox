@@ -191,8 +191,6 @@ var instance = void 0;
 
 var globalConfig = {};
 
-var _initData = {}; // 存储组件初始化的数据
-
 var AlertConstructor = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.extend(__WEBPACK_IMPORTED_MODULE_1__AlertComponent___default.a);
 
 var initInstance = function initInstance() {
@@ -200,19 +198,12 @@ var initInstance = function initInstance() {
         el: document.createElement('div')
     });
     document.body.appendChild(instance.$el);
-
-    _initData = Object.assign({}, instance.$data);
 };
 
 var Alert = function Alert(content) {
     var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
 
-    if (!instance) {
-        initInstance();
-    }
-
-    // 恢复之前的数据
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_merge__["a" /* default */])(instance.$data, _initData);
+    initInstance();
 
     options.content = content;
     // 将全局的 Alert 配置 合并到默认值中
@@ -257,7 +248,7 @@ var instance = void 0;
 
 var globalConfig = {};
 
-var _initData = {};
+// let _initData = {};
 
 var ConfirmConstructor = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.extend(__WEBPACK_IMPORTED_MODULE_1__ConfirmComponent___default.a);
 
@@ -265,19 +256,13 @@ var initInstance = function initInstance() {
     instance = new ConfirmConstructor({
         el: document.createElement('div')
     });
-    _initData = Object.assign({}, instance.$data);
     document.body.appendChild(instance.$el);
 };
 
 var Confirm = function Confirm(content) {
     var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
 
-    if (!instance) {
-        initInstance();
-    }
-
-    // 恢复默认设置
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_merge__["a" /* default */])(instance.$data, _initData);
+    initInstance();
 
     options.content = content;
 
@@ -976,14 +961,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    directives: [{
-      name: "show",
-      rawName: "v-show",
-      value: (_vm.show),
-      expression: "show"
-    }]
-  }, [_c('div', {
+  return (_vm.show) ? _c('div', [_c('div', {
     staticClass: "popup popup-in",
     staticStyle: {
       "display": "block"
@@ -1007,7 +985,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticStyle: {
       "display": "block"
     }
-  })])
+  })]) : _vm._e()
 },staticRenderFns: []}
 
 /***/ }),
@@ -1015,14 +993,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    directives: [{
-      name: "show",
-      rawName: "v-show",
-      value: (_vm.show),
-      expression: "show"
-    }]
-  }, [_c('div', {
+  return (_vm.show) ? _c('div', [_c('div', {
     staticClass: "popup popup-in",
     staticStyle: {
       "display": "block"
@@ -1052,7 +1023,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticStyle: {
       "display": "block"
     }
-  })])
+  })]) : _vm._e()
 },staticRenderFns: []}
 
 /***/ })
