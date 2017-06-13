@@ -14,11 +14,12 @@
     methods: {
       alert () {
         this.$alert('欢迎使用 wc-messagebox', {
+          title: '你好呀',
           btn: {
             text: '定制按钮文本和颜色',
-            style: {
-              'color': 'red'
-            }
+            // style: {
+            //   'color': 'red'
+            // }
           }
         })
         .then(()=>{
@@ -41,6 +42,7 @@
 
       confirm () {
         this.$confirm('欢迎使用 wc-messagebox', {
+          title: '提示',
           yes: {
             text: '新按钮'
           }
@@ -64,7 +66,7 @@
 
 
       toast () {
-        this.$toast('欢迎使用 wc-messagebox');
+        this.$toast('恭喜您, 登录成功!', 2000);
       }
     }
   }

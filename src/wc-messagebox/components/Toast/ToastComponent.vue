@@ -9,7 +9,7 @@
 	}
 	.toast-message {
 		font-size: 14px;
-		padding: 10px 25px;
+		padding: 15px 20px;
 		text-align: center;
 		color: #fff;
 		border-radius: 6px;
@@ -59,6 +59,7 @@
 			return {
 				show: false,
 				content: '',
+				duration: 1500,
 				position: 'bottom'
 			}
 		},

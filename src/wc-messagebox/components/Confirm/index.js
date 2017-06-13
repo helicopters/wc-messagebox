@@ -6,8 +6,6 @@ let instance;
 
 let globalConfig = {};
 
-// let _initData = {};
-
 let ConfirmConstructor = Vue.extend(ConfirmComponent);
 
 let initInstance = ()=>{

@@ -88,9 +88,10 @@
     text-align: center;
     white-space: nowrap;
     text-overflow: ellipsis;
-    color: #007aff;
+    color: #3478f6;
     background: rgba(255, 255, 255, .95);
     -webkit-box-flex: 1;
+    letter-spacing: 0.5px;
 }
 .popup-button:after {
     position: absolute;
@@ -131,7 +132,7 @@
     -webkit-transition-duration: 400ms;
     transition-duration: 400ms;
     opacity: 0;
-    background: rgba(0, 0, 0, .4);
+    background: rgba(0, 0, 0, .45);
 }
 .popup-backdrop.active {
     opacity: 1;
