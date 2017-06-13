@@ -1,5 +1,6 @@
 <style scoped lang="less">
 .popup {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC","Helvetica Neue",STHeiti,"Microsoft Yahei",Tahoma,Simsun,sans-serif;
     position: fixed;
     z-index: 10000;
     top: 50%;
