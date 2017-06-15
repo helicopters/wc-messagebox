@@ -13,10 +13,10 @@
     name: 'app',
     methods: {
       alert () {
-        this.$alert('欢迎使用 wc-messagebox', {
-          title: '你好呀',
+        this.$alert('欢迎使用 MUI', {
+          title: '提示',
           btn: {
-            text: '定制按钮文本和颜色',
+            text: '确定',
             // style: {
             //   'color': 'red'
             // }
