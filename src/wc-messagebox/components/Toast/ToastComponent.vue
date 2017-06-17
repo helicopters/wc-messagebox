@@ -1,6 +1,14 @@
+<style scoped lang="less">
+	.fade-enter-active, .fade-leave-active {
+	  transition: opacity .4s
+	}
+	.fade-enter, .fade-leave-active {
+	  opacity: 0
+	}	
+</style>
 <template>
-	<transition name="fade" @after-leave="afterLeave">
-		<div class="toast-container" :class="position" v-show="show">
+	<transition name="fade">
+		<div class="toast" v-if="show">
 			<div class="toast-message">
 				{{content}}
 			</div>
@@ -15,13 +23,7 @@
 			return {
 				show: false,
 				content: '',
-				duration: 1500,
-				position: 'bottom'
-			}
-		},
-		methods: {
-			afterLeave () {
-				this.show = false;
+				duration: 1500
 			}
 		}
 	}

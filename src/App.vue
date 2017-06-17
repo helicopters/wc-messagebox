@@ -5,21 +5,24 @@
     <button @click="confirm">Confirm</button>
     <button @click="confirm2">Confirm2</button>
     <button @click="toast">Toast</button>
+
   </div>
 </template>
 <script>
   import Vue from 'vue'
   export default {
     name: 'app',
+    data () {
+      return {
+        show: false
+      }
+    },
     methods: {
       alert () {
-        this.$alert('欢迎使用 MUI', {
+        this.$alert('欢迎使用 wc-messagebox', {
           title: '提示',
           btn: {
-            text: '确定',
-            // style: {
-            //   'color': 'red'
-            // }
+            text: '确定'
           }
         })
         .then(()=>{

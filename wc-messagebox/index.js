@@ -64,7 +64,7 @@ module.exports =
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 10);
+/******/ 	return __webpack_require__(__webpack_require__.s = 11);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -180,7 +180,7 @@ module.exports = function normalizeComponent (
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__AlertComponent__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__AlertComponent__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__AlertComponent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__AlertComponent__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils_merge__ = __webpack_require__(2);
 
@@ -237,7 +237,7 @@ var Alert = function Alert(content) {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ConfirmComponent__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ConfirmComponent__ = __webpack_require__(16);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ConfirmComponent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__ConfirmComponent__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils_merge__ = __webpack_require__(2);
 
@@ -247,8 +247,6 @@ var Alert = function Alert(content) {
 var instance = void 0;
 
 var globalConfig = {};
-
-// let _initData = {};
 
 var ConfirmConstructor = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.extend(__WEBPACK_IMPORTED_MODULE_1__ConfirmComponent___default.a);
 
@@ -302,20 +300,21 @@ var Confirm = function Confirm(content) {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ToastComponent__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ToastComponent__ = __webpack_require__(17);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ToastComponent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__ToastComponent__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils_merge__ = __webpack_require__(2);
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 
 
 
-// 实例
+
+// 创建实例
 var instance = void 0;
 
-// 全局配置: 从 Vue.use() 里面传递过来的配置
 var globalConfig = void 0;
 
-// 默认的显示状态
+// 设置默认的显示状态
 var showing = false;
 
 // 创建组件构造函数
@@ -328,35 +327,34 @@ var initInstance = function initInstance() {
     });
     document.body.appendChild(instance.$el);
 };
-
-// 每次 this.$toast() 调用
+// Toast 具体调用方式
 var Toast = function Toast(content) {
     var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
 
-    // 如果存在 instance 则不创建
+    // 如果存在 instance, 则使用 instance
     if (!instance) {
         initInstance();
     }
-    // 拿到 this.$toast() 给的 content
-    options.content = content;
-
-    // 取到全局的配置选项
+    instance.content = content;
+    // 合并全局配置
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_merge__["a" /* default */])(instance.$data, globalConfig);
-
-    // 取到调用的时候的配置选项
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_merge__["a" /* default */])(instance.$data, options);
-
+    // 用来支持当 this.$toast(content, duration) 的调用方式
+    if ((typeof options === 'undefined' ? 'undefined' : _typeof(options)) !== 'object') {
+        instance.duration = options;
+    } else {
+        // 合并单个调用配置
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_merge__["a" /* default */])(instance.$data, options);
+    }
     // 如果当前正在显示, 则不显示
     if (!showing) {
         // 显示 toast
         showing = true;
         instance.show = true;
-
         // 指定时间之后自动消失
         setTimeout(function () {
             showing = false;
             instance.show = false;
-        }, globalConfig.duration || 1500);
+        }, instance.duration);
     }
 };
 /* harmony default export */ __webpack_exports__["a"] = ({
@@ -371,189 +369,9 @@ var Toast = function Toast(content) {
 
 /***/ }),
 /* 7 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports) {
 
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins__ = __webpack_require__(1);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins__["a" /* default */]],
-    data: function data() {
-        return {
-            show: true,
-            title: '', // 默认无标题
-            content: '',
-            btn: {
-                text: '确定',
-                // 设置样式
-                style: {}
-            }
-        };
-    },
-
-    methods: {
-        success: function success() {
-            this.show = false;
-        }
-    }
-});
+// removed by extract-text-webpack-plugin
 
 /***/ }),
 /* 8 */
@@ -598,139 +416,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins__["a" /* default */]],
     data: function data() {
         return {
-            show: true,
-            title: '',
+            show: false,
+            title: '提示',
             content: '',
-            yes: {
+            btn: {
                 text: '确定',
-                style: {}
-            },
-            no: {
-                text: '取消',
+
                 style: {}
             }
         };
@@ -738,9 +435,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     methods: {
         success: function success() {
-            this.show = false;
-        },
-        cancel: function cancel() {
             this.show = false;
         }
     }
@@ -788,7 +482,43 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins__["a" /* default */]],
+    data: function data() {
+        return {
+            show: false,
+            title: '提示',
+            content: '',
+            yes: {
+                text: '确定',
+                style: {}
+            },
+            no: {
+                text: '取消',
+                style: {}
+            }
+        };
+    },
+
+    methods: {
+        success: function success() {
+            this.show = false;
+        },
+        cancel: function cancel() {
+            this.show = false;
+        }
+    }
+});
+
+/***/ }),
+/* 10 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins__ = __webpack_require__(1);
 //
 //
 //
@@ -814,19 +544,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		return {
 			show: false,
 			content: '',
-			position: 'bottom'
+			duration: 1500
 		};
-	},
-
-	methods: {
-		afterLeave: function afterLeave() {
-			this.show = false;
-		}
 	}
 });
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -836,6 +560,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_Alert__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_Confirm__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_Toast__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__static_base_css__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__static_base_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__static_base_css__);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Alert", function() { return __WEBPACK_IMPORTED_MODULE_1__components_Alert__["a"]; });
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Confirm", function() { return __WEBPACK_IMPORTED_MODULE_2__components_Confirm__["a"]; });
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Toast", function() { return __WEBPACK_IMPORTED_MODULE_3__components_Toast__["a"]; });
@@ -846,11 +572,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
-/***/ }),
-/* 11 */
-/***/ (function(module, exports) {
 
-// removed by extract-text-webpack-plugin
 
 /***/ }),
 /* 12 */
@@ -866,25 +588,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 /* 14 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-
-/* styles */
-__webpack_require__(12)
-
-var Component = __webpack_require__(3)(
-  /* script */
-  __webpack_require__(7),
-  /* template */
-  __webpack_require__(18),
-  /* scopeId */
-  "data-v-36613b10",
-  /* cssModules */
-  null
-)
-
-module.exports = Component.exports
-
+// removed by extract-text-webpack-plugin
 
 /***/ }),
 /* 15 */
@@ -900,7 +606,7 @@ var Component = __webpack_require__(3)(
   /* template */
   __webpack_require__(19),
   /* scopeId */
-  "data-v-a298f2f0",
+  "data-v-36613b10",
   /* cssModules */
   null
 )
@@ -914,13 +620,35 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(11)
+__webpack_require__(14)
 
 var Component = __webpack_require__(3)(
   /* script */
   __webpack_require__(9),
   /* template */
-  __webpack_require__(17),
+  __webpack_require__(20),
+  /* scopeId */
+  "data-v-a298f2f0",
+  /* cssModules */
+  null
+)
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 17 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+/* styles */
+__webpack_require__(12)
+
+var Component = __webpack_require__(3)(
+  /* script */
+  __webpack_require__(10),
+  /* template */
+  __webpack_require__(18),
   /* scopeId */
   "data-v-17fb017a",
   /* cssModules */
@@ -931,41 +659,28 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 17 */
+/* 18 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('transition', {
     attrs: {
       "name": "fade"
-    },
-    on: {
-      "after-leave": _vm.afterLeave
     }
-  }, [_c('div', {
-    directives: [{
-      name: "show",
-      rawName: "v-show",
-      value: (_vm.show),
-      expression: "show"
-    }],
-    staticClass: "toast-container",
-    class: _vm.position
+  }, [(_vm.show) ? _c('div', {
+    staticClass: "toast"
   }, [_c('div', {
     staticClass: "toast-message"
-  }, [_vm._v("\n\t\t\t" + _vm._s(_vm.content) + "\n\t\t")])])])
+  }, [_vm._v("\n\t\t\t" + _vm._s(_vm.content) + "\n\t\t")])]) : _vm._e()])
 },staticRenderFns: []}
 
 /***/ }),
-/* 18 */
+/* 19 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return (_vm.show) ? _c('div', [_c('div', {
-    staticClass: "popup popup-in",
-    staticStyle: {
-      "display": "block"
-    }
+  return _c('transition', [(_vm.show) ? _c('div', [_c('div', {
+    staticClass: "popup popup-in"
   }, [_c('div', {
     staticClass: "popup-inner"
   }, [(_vm.title) ? _c('div', {
@@ -975,25 +690,22 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_vm._v(_vm._s(_vm.content))])]), _vm._v(" "), _c('div', {
     staticClass: "popup-buttons"
   }, [_c('span', {
-    staticClass: "popup-button",
+    staticClass: "popup-button popup-button-bold",
     style: (_vm.btn.style),
     on: {
       "click": _vm.success
     }
-  }, [_vm._v("\n                " + _vm._s(_vm.btn.text) + "\n            ")])])]), _vm._v(" "), _c('div', {
-    staticClass: "popup-backdrop active",
-    staticStyle: {
-      "display": "block"
-    }
-  })]) : _vm._e()
+  }, [_vm._v("\n                    " + _vm._s(_vm.btn.text) + "\n                ")])])]), _vm._v(" "), _c('div', {
+    staticClass: "popup-backdrop active"
+  })]) : _vm._e()])
 },staticRenderFns: []}
 
 /***/ }),
-/* 19 */
+/* 20 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return (_vm.show) ? _c('div', [_c('div', {
+  return _c('transition', [(_vm.show) ? _c('div', [_c('div', {
     staticClass: "popup popup-in",
     staticStyle: {
       "display": "block"
@@ -1023,7 +735,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticStyle: {
       "display": "block"
     }
-  })]) : _vm._e()
+  })]) : _vm._e()])
 },staticRenderFns: []}
 
 /***/ })

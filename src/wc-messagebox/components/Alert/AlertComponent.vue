@@ -1,18 +1,38 @@
+<style scoped lang="less">
+    .v-enter{
+        opacity: 0;
+        .popup{
+            transform: translate3d(-50%, -50%, 0) scale(1.185);
+        }
+    }
+    .v-enter-active{
+        transition: all .4s;
+        .popup{
+            transition: all .4s;
+        }
+    }
+    .v-leave-active{
+        transition: all .6s;
+        opacity: 0;
+    }    
+</style>
 <template>
-    <div v-if="show">
-        <div class="popup popup-in" style="display: block;">
-            <div class="popup-inner">
-                <div class="popup-title" v-if="title">{{title}}</div>
-                <div class="popup-text">{{content}}</div>
+    <transition>
+        <div v-if="show">
+            <div class="popup popup-in">
+                <div class="popup-inner">
+                    <div class="popup-title" v-if="title">{{title}}</div>
+                    <div class="popup-text">{{content}}</div>
+                </div>
+                <div class="popup-buttons">
+                    <span class="popup-button popup-button-bold" :style="btn.style" @click="success">
+                        {{btn.text}}
+                    </span>
+                </div>
             </div>
-            <div class="popup-buttons">
-                <span class="popup-button popup-button-bold" :style="btn.style" @click="success">
-                    {{btn.text}}
-                </span>
-            </div>
+            <div class="popup-backdrop active"></div>
         </div>
-        <div class="popup-backdrop active" style="display: block;"></div>
-    </div>
+    </transition>
 </template>
 <script>
     import pageChange from '../../mixins'
@@ -20,12 +40,12 @@
         mixins: [pageChange],
         data () {
             return {
-                show: true,
+                show: false,
                 title: '提示',
                 content: '',
                 btn: {
                     text: '确定',
-                    // 设置样式
+            
                     style: {}
                 }
             }
