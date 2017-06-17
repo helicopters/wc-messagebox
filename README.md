@@ -33,6 +33,7 @@ options = {
 	}
 }
 
+
 this.$confirm(content, options)
 options = {
     title: '', // 默认无标题
@@ -45,12 +46,8 @@ options = {
         style: {}
     }
 }
-this.$toast(content, options);
-options = {
-	position: 'bottom' // 'bottom' | 'center',
-	duration: '1500'
-}
-或者
+
+
 this.$toast(content, duration);
 
 ```
