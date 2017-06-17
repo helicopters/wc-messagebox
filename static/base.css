@@ -1,5 +1,7 @@
 .popup {
     font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", STHeiti, "Microsoft Yahei", Tahoma, Simsun, sans-serif;
+    -webkit-user-select:none;
+    -webkit-tap-highlight-color:rgba(255,255,255,0);
 }
 .popup {
     position: fixed;

@@ -5,16 +5,15 @@
             transform: translate3d(-50%, -50%, 0) scale(1.185);
         }
     }
-    .v-enter-active{
+    .v-enter-active, .v-leave-active{
         transition: all .4s;
         .popup{
             transition: all .4s;
         }
     }
     .v-leave-active{
-        transition: all .6s;
         opacity: 0;
-    }    
+    }     
 </style>
 <template>
     <transition>
