@@ -44,7 +44,6 @@
                 content: '',
                 btn: {
                     text: '确定',
-            
                     style: {}
                 }
             }

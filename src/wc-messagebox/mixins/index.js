@@ -7,5 +7,16 @@ export default {
         window.addEventListener('hashchange', listener);
         window.addEventListener('popstate', listener);
         window.addEventListener('pagehide', listener);
+
+        // fix 滚动穿透bug
+        setTimeout(function(){
+	        let mask = document.querySelector('.popup-backdrop');
+	        let pop = document.querySelector('.popup');
+	        let preventScroll = e => e.preventDefault();
+
+	        mask.addEventListener('touchmove', preventScroll, false);
+	        pop.addEventListener('touchmove', preventScroll, false);
+
+        },200);
 	}
 }
