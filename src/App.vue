@@ -5,7 +5,40 @@
     <button @click="confirm">Confirm</button>
     <button @click="confirm2">Confirm2</button>
     <button @click="toast">Toast</button>
+    <p>scroll</p>
+    <p>scroll</p>
+    <p>scroll</p>
+    <p>scroll</p>
+    <p>scroll</p>
+    <p>scroll</p>
+    <p>scroll</p>
+    <p>scroll</p>
+    <p>scroll</p>
+    <p>scroll</p>
+    <p>scroll</p>
+    <p>scroll</p>
+    <p>scroll</p>
+    <p>scroll</p>
+    <p>scroll</p>
+    <p>scroll</p>
+    <p>scroll</p>
+    <p>scroll</p>
+    <p>scroll</p>
+    <p>scroll</p>
+    <p>scroll</p>
+    <p>scroll</p>
+    <p>scroll</p>
+    <p>scroll</p>
+    <p>scroll</p>
+    <p>scroll</p>
+    <p>scroll</p>
+    <p>scroll</p>
+    <p>scroll</p>
+    <p>scroll</p>
+    <p>scroll</p>
 
+    <p>scroll</p>
+    <p>scroll</p>
   </div>
 </template>
 <script>
@@ -66,8 +99,6 @@
             this.$toast('你点击了取消');
           })
       },
-
-
       toast () {
         this.$toast('恭喜您, 登录成功!', 2000);
       }
