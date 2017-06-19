@@ -80,28 +80,31 @@ module.exports = require("vue");
 "use strict";
 // fix 路由切换时弹窗不消失的 bug
 /* harmony default export */ __webpack_exports__["a"] = ({
-       mounted: function mounted() {
-              var _this = this;
+    mounted: function mounted() {
+        var _this = this;
 
-              var listener = function listener() {
-                     _this.show = false;
-              };
-              window.addEventListener('hashchange', listener);
-              window.addEventListener('popstate', listener);
-              window.addEventListener('pagehide', listener);
+        var listener = function listener() {
+            _this.show = false;
+        };
+        window.addEventListener('hashchange', listener);
+        window.addEventListener('popstate', listener);
+        window.addEventListener('pagehide', listener);
 
-              // fix 滚动穿透bug
-              setTimeout(function () {
-                     var mask = document.querySelector('.wc-messagebox-popup-backdrop');
-                     var pop = document.querySelector('.wc-messagebox-popup');
-                     var preventScroll = function preventScroll(e) {
-                            return e.preventDefault();
-                     };
+        // fix 滚动穿透bug
+        setTimeout(function () {
+            var mask = document.querySelector('.wc-messagebox-popup-backdrop');
+            var pop = document.querySelector('.wc-messagebox-popup');
 
-                     mask.addEventListener('touchmove', preventScroll, false);
-                     pop.addEventListener('touchmove', preventScroll, false);
-              }, 200);
-       }
+            var preventScroll = function preventScroll(e) {
+                return e.preventDefault();
+            };
+            // toast 是没有 mast 和 pop 的
+            if (mask && pop) {
+                mask.addEventListener('touchmove', preventScroll, false);
+                pop.addEventListener('touchmove', preventScroll, false);
+            }
+        }, 200);
+    }
 });
 
 /***/ }),
@@ -677,9 +680,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "name": "fade"
     }
   }, [(_vm.show) ? _c('div', {
-    staticClass: "toast"
+    staticClass: "wc-messagebox-toast"
   }, [_c('div', {
-    staticClass: "toast-message"
+    staticClass: "wc-messagebox-toast-message"
   }, [_vm._v("\n\t\t\t" + _vm._s(_vm.content) + "\n\t\t")])]) : _vm._e()])
 },staticRenderFns: []}
 

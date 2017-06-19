@@ -12,11 +12,13 @@ export default {
         setTimeout(function(){
 	        let mask = document.querySelector('.wc-messagebox-popup-backdrop');
 	        let pop = document.querySelector('.wc-messagebox-popup');
+
 	        let preventScroll = e => e.preventDefault();
-
-	        mask.addEventListener('touchmove', preventScroll, false);
-	        pop.addEventListener('touchmove', preventScroll, false);
-
+            // toast 是没有 mast 和 pop 的
+            if (mask && pop) {
+                mask.addEventListener('touchmove', preventScroll, false);
+                pop.addEventListener('touchmove', preventScroll, false);                
+            }
         },200);
 	}
 }

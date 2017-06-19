@@ -122,8 +122,8 @@
     opacity: 1;
 }
 
-/* toast */
-.toast {
+/* wc-messagebox-toast */
+.wc-messagebox-toast {
     position: fixed;
     z-index: 9999;
     line-height: 17px;
@@ -131,7 +131,7 @@
     transform: translate(-50%, 0);
     bottom: 50px;
 }
-.toast-message {
+.wc-messagebox-toast-message {
     font-size: 14px;
     padding: 12px 16px;
     text-align: center;

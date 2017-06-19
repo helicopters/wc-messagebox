@@ -8,8 +8,8 @@
 </style>
 <template>
 	<transition name="fade">
-		<div class="toast" v-if="show">
-			<div class="toast-message">
+		<div class="wc-messagebox-toast" v-if="show">
+			<div class="wc-messagebox-toast-message">
 				{{content}}
 			</div>
 		</div>
