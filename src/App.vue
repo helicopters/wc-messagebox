@@ -1,4 +1,8 @@
 <style>
+  body{
+    margin:0;
+    padding:0;
+  }
   .popup{
     background: red;
   }

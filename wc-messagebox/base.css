@@ -1,11 +1,18 @@
-.wc-messagebox-popup {
+.wc-messagebox{
+    position: fixed;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, .4);   
+    z-index: 998; 
     font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", STHeiti, "Microsoft Yahei", Tahoma, Simsun, sans-serif;
     -webkit-user-select:none;
     -webkit-tap-highlight-color:rgba(255,255,255,0);
+
 }
 .wc-messagebox-popup {
     position: fixed;
-    z-index: 10000;
+    z-index: 999;
     top: 50%;
     left: 50%;
     overflow: hidden;
@@ -108,20 +115,6 @@
 .wc-messagebox-popup-button:last-child:after {
     display: none;
 }
-.wc-messagebox-popup-backdrop {
-    position: fixed;
-    z-index: 998;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    opacity: 0;
-    background: rgba(0, 0, 0, .4);
-}
-.wc-messagebox-popup-backdrop.active {
-    opacity: 1;
-}
-
 /* wc-messagebox-toast */
 .wc-messagebox-toast {
     position: fixed;

@@ -17,7 +17,7 @@
 </style>
 <template>
     <transition>
-        <div v-if="show">
+        <div v-if="show" class="wc-messagebox">
             <div class="wc-messagebox-popup wc-messagebox-popup-in">
                 <div class="wc-messagebox-popup-inner">
                     <div class="wc-messagebox-popup-title" v-if="title">{{title}}</div>
@@ -29,7 +29,6 @@
                     </span>
                 </div>
             </div>
-            <div class="wc-messagebox-popup-backdrop active"></div>
         </div>
     </transition>
 </template>

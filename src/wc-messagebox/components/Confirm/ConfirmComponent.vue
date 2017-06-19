@@ -17,8 +17,8 @@
 </style>
 <template>
     <transition>
-        <div v-if="show">
-            <div class="wc-messagebox-popup wc-messagebox-popup-in" style="display: block;">
+        <div v-if="show" class="wc-messagebox">
+            <div class="wc-messagebox-popup wc-messagebox-popup-in">
                 <div class="wc-messagebox-popup-inner">
                     <div class="wc-messagebox-popup-title" v-if="title">{{title}}</div>
                     <div class="wc-messagebox-popup-text">{{content}}</div>
@@ -28,7 +28,6 @@
                     <span class="wc-messagebox-popup-button" :style="no.style" @click="cancel">{{no.text}}</span>
                 </div>
             </div>
-            <div class="wc-messagebox-popup-backdrop active" style="display: block;"></div>
         </div>
     </transition>
 </template>
