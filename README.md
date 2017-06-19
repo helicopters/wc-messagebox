@@ -26,9 +26,6 @@ options = {
 	btn: {
 		text: '',
 		style: {
-			'backgroun-color': 'red',
-			'font-size': '20px',
-			'color': 'blue'
 		}
 	}
 }

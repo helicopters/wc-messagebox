@@ -1,3 +1,8 @@
+<style>
+  .popup{
+    background: red;
+  }
+</style>
 <template>
   <div id="app">
   	<button @click="alert">Alert</button>
@@ -65,7 +70,7 @@
       alert2 () {
         this.$alert('欢迎使用 wc-messagebox', {
           btn: {
-            text: '我依旧是原来的值',
+            text: '我变颜色了',
             style: {
               'color': 'red'
             }

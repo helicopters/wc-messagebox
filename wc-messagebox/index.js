@@ -80,16 +80,28 @@ module.exports = require("vue");
 "use strict";
 // fix 路由切换时弹窗不消失的 bug
 /* harmony default export */ __webpack_exports__["a"] = ({
-  mounted: function mounted() {
-    var _this = this;
+       mounted: function mounted() {
+              var _this = this;
 
-    var listener = function listener() {
-      _this.show = false;
-    };
-    window.addEventListener('hashchange', listener);
-    window.addEventListener('popstate', listener);
-    window.addEventListener('pagehide', listener);
-  }
+              var listener = function listener() {
+                     _this.show = false;
+              };
+              window.addEventListener('hashchange', listener);
+              window.addEventListener('popstate', listener);
+              window.addEventListener('pagehide', listener);
+
+              // fix 滚动穿透bug
+              setTimeout(function () {
+                     var mask = document.querySelector('.wc-messagebox-popup-backdrop');
+                     var pop = document.querySelector('.wc-messagebox-popup');
+                     var preventScroll = function preventScroll(e) {
+                            return e.preventDefault();
+                     };
+
+                     mask.addEventListener('touchmove', preventScroll, false);
+                     pop.addEventListener('touchmove', preventScroll, false);
+              }, 200);
+       }
 });
 
 /***/ }),
@@ -415,7 +427,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -427,7 +438,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             content: '',
             btn: {
                 text: '确定',
-
                 style: {}
             }
         };
@@ -447,7 +457,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins__ = __webpack_require__(1);
-//
 //
 //
 //
@@ -680,23 +689,23 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('transition', [(_vm.show) ? _c('div', [_c('div', {
-    staticClass: "popup popup-in"
+    staticClass: "wc-messagebox-popup wc-messagebox-popup-in"
   }, [_c('div', {
-    staticClass: "popup-inner"
+    staticClass: "wc-messagebox-popup-inner"
   }, [(_vm.title) ? _c('div', {
-    staticClass: "popup-title"
+    staticClass: "wc-messagebox-popup-title"
   }, [_vm._v(_vm._s(_vm.title))]) : _vm._e(), _vm._v(" "), _c('div', {
-    staticClass: "popup-text"
+    staticClass: "wc-messagebox-popup-text"
   }, [_vm._v(_vm._s(_vm.content))])]), _vm._v(" "), _c('div', {
-    staticClass: "popup-buttons"
+    staticClass: "wc-messagebox-popup-buttons"
   }, [_c('span', {
-    staticClass: "popup-button popup-button-bold",
+    staticClass: "wc-messagebox-popup-button wc-messagebox-popup-button-bold",
     style: (_vm.btn.style),
     on: {
       "click": _vm.success
     }
   }, [_vm._v("\n                    " + _vm._s(_vm.btn.text) + "\n                ")])])]), _vm._v(" "), _c('div', {
-    staticClass: "popup-backdrop active"
+    staticClass: "wc-messagebox-popup-backdrop active"
   })]) : _vm._e()])
 },staticRenderFns: []}
 
@@ -706,32 +715,32 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('transition', [(_vm.show) ? _c('div', [_c('div', {
-    staticClass: "popup popup-in",
+    staticClass: "wc-messagebox-popup wc-messagebox-popup-in",
     staticStyle: {
       "display": "block"
     }
   }, [_c('div', {
-    staticClass: "popup-inner"
+    staticClass: "wc-messagebox-popup-inner"
   }, [(_vm.title) ? _c('div', {
-    staticClass: "popup-title"
+    staticClass: "wc-messagebox-popup-title"
   }, [_vm._v(_vm._s(_vm.title))]) : _vm._e(), _vm._v(" "), _c('div', {
-    staticClass: "popup-text"
+    staticClass: "wc-messagebox-popup-text"
   }, [_vm._v(_vm._s(_vm.content))])]), _vm._v(" "), _c('div', {
-    staticClass: "popup-buttons"
+    staticClass: "wc-messagebox-popup-buttons"
   }, [_c('span', {
-    staticClass: "popup-button",
+    staticClass: "wc-messagebox-popup-button",
     style: (_vm.yes.style),
     on: {
       "click": _vm.success
     }
   }, [_vm._v(_vm._s(_vm.yes.text))]), _vm._v(" "), _c('span', {
-    staticClass: "popup-button",
+    staticClass: "wc-messagebox-popup-button",
     style: (_vm.no.style),
     on: {
       "click": _vm.cancel
     }
   }, [_vm._v(_vm._s(_vm.no.text))])])]), _vm._v(" "), _c('div', {
-    staticClass: "popup-backdrop active",
+    staticClass: "wc-messagebox-popup-backdrop active",
     staticStyle: {
       "display": "block"
     }

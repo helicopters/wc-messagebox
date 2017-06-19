@@ -1,7 +1,9 @@
-.popup {
+.wc-messagebox-popup {
     font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", STHeiti, "Microsoft Yahei", Tahoma, Simsun, sans-serif;
+    -webkit-user-select:none;
+    -webkit-tap-highlight-color:rgba(255,255,255,0);
 }
-.popup {
+.wc-messagebox-popup {
     position: fixed;
     z-index: 10000;
     top: 50%;
@@ -13,22 +15,22 @@
     color: #000;
     border-radius: 13px;
 }
-.popup.popup-in {
+.wc-messagebox-popup.wc-messagebox-popup-in {
     display: block;
     transform: translate3d(-50%, -50%, 0) scale(1);
     opacity: 1;
 }
-.popup.popup-out {
+.wc-messagebox-popup.wc-messagebox-popup-out {
     transform: translate3d(-50%, -50%, 0) scale(1);
     opacity: 0;
 }
-.popup-inner {
+.wc-messagebox-popup-inner {
     position: relative;
     padding: 15px;
     border-radius: 13px 13px 0 0;
     background: rgba(255, 255, 255, .95);
 }
-.popup-inner:after {
+.wc-messagebox-popup-inner:after {
     position: absolute;
     z-index: 15;
     top: auto;
@@ -43,23 +45,23 @@
     transform-origin: 50% 100%;
     background-color: rgba(0, 0, 0, .2);
 }
-.popup-title {
+.wc-messagebox-popup-title {
     font-size: 18px;
     font-weight: 500;
     text-align: center;
 }
-.popup-title + .popup-text {
+.wc-messagebox-popup-title + .wc-messagebox-popup-text {
     font-family: inherit;
     font-size: 14px;
     margin: 5px 0 0;
 }
-.popup-buttons {
+.wc-messagebox-popup-buttons {
     position: relative;
     display: flex;
     height: 44px;
     justify-content: center;
 }
-.popup-button {
+.wc-messagebox-popup-button {
     font-size: 17px;
     line-height: 44px;
     position: relative;
@@ -76,7 +78,7 @@
     background: rgba(255, 255, 255, .95);
     letter-spacing: 0.5px;
 }
-.popup-button:after {
+.wc-messagebox-popup-button:after {
     position: absolute;
     z-index: 15;
     top: 0;
@@ -91,22 +93,22 @@
     transform-origin: 100% 50%;
     background-color: rgba(0, 0, 0, .2);
 }
-.popup-button:first-child {
+.wc-messagebox-popup-button:first-child {
     border-radius: 0 0 0 13px;
 }
-.popup-button:first-child:last-child {
+.wc-messagebox-popup-button:first-child:last-child {
     border-radius: 0 0 13px 13px;
 }
-.popup-button:last-child {
+.wc-messagebox-popup-button:last-child {
     border-radius: 0 0 13px 0;
 }
-.popup-button-bold {
+.wc-messagebox-popup-button-bold {
     font-weight: 600;
 }
-.popup-button:last-child:after {
+.wc-messagebox-popup-button:last-child:after {
     display: none;
 }
-.popup-backdrop {
+.wc-messagebox-popup-backdrop {
     position: fixed;
     z-index: 998;
     top: 0;
@@ -116,7 +118,7 @@
     opacity: 0;
     background: rgba(0, 0, 0, .4);
 }
-.popup-backdrop.active {
+.wc-messagebox-popup-backdrop.active {
     opacity: 1;
 }
 

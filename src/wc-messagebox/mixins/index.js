@@ -10,8 +10,8 @@ export default {
 
         // fix 滚动穿透bug
         setTimeout(function(){
-	        let mask = document.querySelector('.popup-backdrop');
-	        let pop = document.querySelector('.popup');
+	        let mask = document.querySelector('.wc-messagebox-popup-backdrop');
+	        let pop = document.querySelector('.wc-messagebox-popup');
 	        let preventScroll = e => e.preventDefault();
 
 	        mask.addEventListener('touchmove', preventScroll, false);

@@ -1,13 +1,13 @@
 <style scoped lang="less">
     .v-enter{
         opacity: 0;
-        .popup{
+        .wc-messagebox-popup{
             transform: translate3d(-50%, -50%, 0) scale(1.185);
         }
     }
     .v-enter-active, .v-leave-active{
         transition: all .4s;
-        .popup{
+        .wc-messagebox-popup{
             transition: all .4s;
         }
     }
@@ -18,18 +18,18 @@
 <template>
     <transition>
         <div v-if="show">
-            <div class="popup popup-in">
-                <div class="popup-inner">
-                    <div class="popup-title" v-if="title">{{title}}</div>
-                    <div class="popup-text">{{content}}</div>
+            <div class="wc-messagebox-popup wc-messagebox-popup-in">
+                <div class="wc-messagebox-popup-inner">
+                    <div class="wc-messagebox-popup-title" v-if="title">{{title}}</div>
+                    <div class="wc-messagebox-popup-text">{{content}}</div>
                 </div>
-                <div class="popup-buttons">
-                    <span class="popup-button popup-button-bold" :style="btn.style" @click="success">
+                <div class="wc-messagebox-popup-buttons">
+                    <span class="wc-messagebox-popup-button wc-messagebox-popup-button-bold" :style="btn.style" @click="success">
                         {{btn.text}}
                     </span>
                 </div>
             </div>
-            <div class="popup-backdrop active"></div>
+            <div class="wc-messagebox-popup-backdrop active"></div>
         </div>
     </transition>
 </template>
