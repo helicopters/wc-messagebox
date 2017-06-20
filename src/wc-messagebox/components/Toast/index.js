@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import ToastComponent from './ToastComponent'
-import merge from '../../utils/merge'
+import merge from '../../wc-utils/merge'
 
 // 创建实例
 let instance;

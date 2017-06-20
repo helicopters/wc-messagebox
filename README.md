@@ -22,7 +22,7 @@ Vue.use(Toast, options)
 ```javascript
 this.$alert(text, options)
 options = {
-	title: '',  // 默认无标题
+	title: '',  // 默认标题为 '提示'
 	btn: {
 		text: '',
 		style: {
@@ -33,7 +33,7 @@ options = {
 
 this.$confirm(content, options)
 options = {
-    title: '', // 默认无标题
+    title: '', 
     yes: {
         text: '确定',
         style: {}

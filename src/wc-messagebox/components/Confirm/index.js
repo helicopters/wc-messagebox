@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import ConfirmComponent from './ConfirmComponent'
-import merge from '../../utils/merge'
+import merge from '../../wc-utils/merge'
 
 let instance;
 
