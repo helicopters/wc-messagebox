@@ -69,12 +69,6 @@
         show: false
       }
     },
-    mounted () {
-      setTimeout(() =>{
-        this.$alert('hello')
-      }, 3000)
-
-    },
     methods: {
       alert () {
         this.$alert('欢迎使用 wc-messagebox', {
