@@ -26,6 +26,14 @@ let Alert = (content, options = {}) => {
     
     return new Promise((resolve, reject)=>{
         instance.show = true;
+
+        // fix 弹窗出来之后依旧键盘没有回收
+        let inputs = Array.prototype.slice.call(document.querySelectorAll('input'));
+
+        inputs.forEach((input)=>{
+            input.blur();
+        });
+
         let success = instance.success;
 
         instance.success = () => {

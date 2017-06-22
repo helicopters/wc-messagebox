@@ -6,14 +6,24 @@
   .popup{
     background: red;
   }
+  input{
+    height: 100px;
+    width: 50%;
+    background: red;
+    position: absolute;
+    top: 37%;
+    left: 26%;
+  }
 </style>
 <template>
   <div id="app">
+  <input type="text" class="test">
   	<button @click="alert">Alert</button>
     <button @click="alert2">Alert2</button>
     <button @click="confirm">Confirm</button>
     <button @click="confirm2">Confirm2</button>
     <button @click="toast">Toast</button>
+    
     <p>scroll</p>
     <p>scroll</p>
     <p>scroll</p>
@@ -58,6 +68,12 @@
       return {
         show: false
       }
+    },
+    mounted () {
+      setTimeout(() =>{
+        this.$alert('hello')
+      }, 3000)
+
     },
     methods: {
       alert () {
