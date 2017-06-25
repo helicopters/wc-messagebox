@@ -1,10 +1,14 @@
 <style scoped lang="less">
+	.fade-enter {
+	  opacity: 0
+	}
 	.fade-enter-active, .fade-leave-active {
 	  transition: opacity .4s
 	}
-	.fade-enter, .fade-leave-active {
-	  opacity: 0
-	}	
+	.fade-leave-active {
+		opacity: 0;
+	}
+
 </style>
 <template>
 	<transition name="fade">
