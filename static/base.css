@@ -115,6 +115,24 @@
 .wc-messagebox-popup-button:last-child:after {
     display: none;
 }
+/* wc-messagebox-prompt */
+.wc-messagebox-popup-input {
+    width: 100%;
+    margin-top: 12px;
+}
+.wc-messagebox-popup-input input{
+    user-select:text;
+    -webkit-appearance: none;
+    width: 90%;
+    height: 26px;
+    margin:0 auto;  
+    padding: 0 5px;
+    font-size: 14px;
+    background: #fff;
+    border: 0.5px solid rgba(0,0,0,.2);
+    border-radius: 0;    
+}
+
 /* wc-messagebox-toast */
 .wc-messagebox-toast {
     position: fixed;

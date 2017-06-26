@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import AlertComponent from './AlertComponent'
+import AlertComponent from './tpl'
 import merge from '../../wc-utils/merge'
 
 let instance;

@@ -1,12 +1,12 @@
 import Vue from 'vue'
-import ConfirmComponent from './tpl'
+import PromptComponent from './tpl'
 import merge from '../../wc-utils/merge'
 
 let instance;
 
 let globalConfig = {};
 
-let ConfirmConstructor = Vue.extend(ConfirmComponent);
+let ConfirmConstructor = Vue.extend(PromptComponent);
 
 let initInstance = ()=>{
     instance = new ConfirmConstructor({
@@ -15,36 +15,36 @@ let initInstance = ()=>{
     document.body.appendChild(instance.$el);
 }
 
-let Confirm = (content, options={}) => {
+let Prompt = (content, options={}) => {
     initInstance();
 
     options.content = content;
 
-    // 将全局的 confirm 配置 合并到默认值中
+    // 将全局的 Prompt 配置 合并到默认值中
     merge(instance.$data, globalConfig);
-    // 将单个 confirm instance 的配置合并到默认值中
+    // 将单个 Prompt instance 的配置合并到默认值中
     merge(instance.$data, options);
 
     return new Promise((resolve, reject)=>{
         instance.show = true;
 
         // fix 弹窗出来之后依旧键盘没有回收
-        let inputs = Array.prototype.slice.call(document.querySelectorAll('input'));
+        // let inputs = Array.prototype.slice.call(document.querySelectorAll('input'));
 
-        inputs.forEach((input)=>{
-            input.blur();
-        });
+        // inputs.forEach((input)=>{
+        //     input.blur();
+        // });
 
         let success = instance.success;
         let cancel = instance.cancel;
         // event
         instance.success = () => {
             success();
-            resolve('ok');
+            resolve(instance.value);
         }
         instance.cancel = () => {
             cancel();
-            reject('cancel');
+            reject(instance.value);
         }
     });
 
@@ -52,6 +52,6 @@ let Confirm = (content, options={}) => {
 export default {
     install (Vue, options={}) {
         globalConfig = options;
-        Vue.prototype.$confirm = Confirm;
+        Vue.prototype.$prompt = Prompt;
     }
 };

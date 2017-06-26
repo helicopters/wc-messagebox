@@ -6,23 +6,16 @@
   .popup{
     background: red;
   }
-  input{
-    height: 100px;
-    width: 50%;
-    background: red;
-    position: absolute;
-    top: 37%;
-    left: 26%;
-  }
+
 </style>
 <template>
   <div id="app">
-  <input type="text" class="test">
   	<button @click="alert">Alert</button>
     <button @click="alert2">Alert2</button>
     <button @click="confirm">Confirm</button>
     <button @click="confirm2">Confirm2</button>
     <button @click="toast">Toast</button>
+    <button @click="prompt">Prompt</button>
     
     <p>scroll</p>
     <p>scroll</p>
@@ -120,6 +113,16 @@
       },
       toast () {
         this.$toast('恭喜您, 登录成功!', 2000);
+      },
+      prompt () {
+        this.$prompt('hello world', {
+            title: '日了狗了',
+            placeholder: '到底有没有日狗'
+        })
+          .then(v => {
+            // console.log(v)
+            this.$toast('你的答案是:' + v);
+          })
       }
     }
   }

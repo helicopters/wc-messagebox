@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import ToastComponent from './ToastComponent'
+import ToastComponent from './tpl'
 import merge from '../../wc-utils/merge'
 
 // 创建实例
