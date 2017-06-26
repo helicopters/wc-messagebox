@@ -1,6 +1,6 @@
 ## wc-messagebox
 * 基于 vue 2.0 开发的弹窗插件
-* 包含 Alert, Confirm, Toast
+* 包含 Alert, Confirm, Toast, Prompt
 * 仿照 iOS 原生UI(样式来源: [MUI](http://dev.dcloud.net.cn/mui/))
 
 ## Install
@@ -10,12 +10,13 @@ npm i wc-messagebox --save
 
 ## Quick Start
 ```javascript
-import {Alert, Confirm, Toast} from 'wc-messagebox'
+import {Alert, Confirm, Toast, Prompt} from 'wc-messagebox'
 import 'wc-messagebox/style.css'
 
 Vue.use(Alert, options)
 Vue.use(Confirm, options)
 Vue.use(Toast, options)
+Vue.use(Prompt, options)
 ```
 
 ## Usage
