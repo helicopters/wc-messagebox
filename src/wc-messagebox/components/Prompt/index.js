@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import PromptComponent from './tpl'
-import merge from '../../wc-utils/merge'
+import merge from 'wc-utils/merge'
 
 let instance;
 

@@ -36,7 +36,7 @@
 </template>
 <script>
     import pageChange from '../../mixins'
-    import preventPageScroll from '../../wc-utils/prevent-page-scroll'
+    import preventPageScroll from 'wc-utils/prevent-page-scroll'
     export default {
         mixins: [pageChange],
         data () {

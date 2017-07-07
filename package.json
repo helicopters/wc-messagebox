@@ -52,6 +52,7 @@
     "whatwg-fetch": "^2.0.3"
   },
   "devDependencies": {
-    "wc-messagebox": "file:wc-messagebox"
+    "wc-messagebox": "file:wc-messagebox",
+    "wc-utils": "^1.1.0"
   }
 }
