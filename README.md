@@ -3,6 +3,9 @@
 * 包含 Alert, Confirm, Toast, Prompt
 * 仿照 iOS 原生UI(样式来源: [MUI](http://dev.dcloud.net.cn/mui/))
 
+## 效果
+![效果](https://segmentfault.com/img/bVQxkR?w=368&h=624)
+
 ## Install
 ```shell
 npm i wc-messagebox --save
@@ -27,8 +30,7 @@ options = {
 	title: '',  // 默认标题为 '提示'
 	btn: {
 		text: '',
-		style: {
-		}
+		style: {} // 可以通过 style 来修改按钮的样式, 比如说粗细, 颜色
 	}
 }
 
@@ -65,13 +67,11 @@ options = {
 }
 ```
 
-## 说明
+## Introduction
 * Alert, Confirm 返回的是一个Promise, 允许定义点击弹窗之后的操作
 ```javascript
-    this.$confirm(text)
-        .then(success)
-        .catch(fail)
+this.$confirm(text)
+    .then(success)
+    .catch(fail)
 ```
-* 默认的, Alert 弹窗的按钮文本, 是加粗的, 可以通过 btn.style 入口修改按钮样式.
 
-* iOS setTimeout 之后设置 focus, 不可行.
