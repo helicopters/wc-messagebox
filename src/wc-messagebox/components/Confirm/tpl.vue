@@ -1,13 +1,13 @@
 <style scoped lang="less">
     .v-enter{
         opacity: 0;
-        .wc-messagebox-popup{
+        .wc-popup{
             transform: translate3d(-50%, -50%, 0) scale(1.185);
         }
     }
     .v-enter-active, .v-leave-active{
         transition: all .4s;
-        .wc-messagebox-popup{
+        .wc-popup{
             transition: all .4s;
         }
     }
@@ -17,15 +17,15 @@
 </style>
 <template>
     <transition>
-        <div v-if="show" class="wc-messagebox">
-            <div class="wc-messagebox-popup wc-messagebox-popup-in">
-                <div class="wc-messagebox-popup-inner">
-                    <div class="wc-messagebox-popup-title" v-if="title">{{title}}</div>
-                    <div class="wc-messagebox-popup-text">{{content}}</div>
+        <div v-if="show" class="wc">
+            <div class="wc-popup wc-popup-in">
+                <div class="wc-popup-inner">
+                    <div class="wc-popup-title" v-if="title">{{title}}</div>
+                    <div class="wc-popup-text">{{content}}</div>
                 </div>
-                <div class="wc-messagebox-popup-buttons">
-                    <span class="wc-messagebox-popup-button" :style="yes.style" @click="success">{{yes.text}}</span>
-                    <span class="wc-messagebox-popup-button" :style="no.style" @click="cancel">{{no.text}}</span>
+                <div class="wc-popup-buttons">
+                    <span class="wc-popup-button" :style="yes.style" @click="success">{{yes.text}}</span>
+                    <span class="wc-popup-button" :style="no.style" @click="cancel">{{no.text}}</span>
                 </div>
             </div>
         </div>

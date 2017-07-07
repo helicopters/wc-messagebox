@@ -12,8 +12,8 @@
 </style>
 <template>
 	<transition name="fade">
-		<div class="wc-messagebox-toast" v-if="show">
-			<div class="wc-messagebox-toast-message">
+		<div class="wc-toast" v-if="show">
+			<div class="wc-toast-message">
 				{{content}}
 			</div>
 		</div>
