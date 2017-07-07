@@ -4,7 +4,7 @@
 * 仿照 iOS 原生UI(样式来源: [MUI](http://dev.dcloud.net.cn/mui/))
 
 ## 效果
-[效果](https://segmentfault.com/img/bVQxkR?w=368&h=624)
+![效果](https://ooo.0o0.ooo/2017/07/08/595fc5a93517b.gif)
 
 ## Install
 ```shell
