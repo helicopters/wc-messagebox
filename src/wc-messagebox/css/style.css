@@ -84,6 +84,7 @@
     color: #3478f6;
     background: rgba(255, 255, 255, .95);
     letter-spacing: 0.5px;
+    cursor:pointer;
 }
 .wc-popup-button:after {
     position: absolute;
