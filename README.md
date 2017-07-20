@@ -6,6 +6,7 @@
 ## 效果
 ![效果](https://ooo.0o0.ooo/2017/07/08/595fc5a93517b.gif)
 
+
 ## Install
 ```shell
 npm i wc-messagebox --save
@@ -38,6 +39,7 @@ options = {
 this.$confirm(content, options)
 options = {
     title: '', 
+    style: {}, // 同时应用在 yes, no 两个按钮上面的样式
     yes: {
         text: '确定',
         style: {}
@@ -56,6 +58,7 @@ this.$prompt(content, options)
 options = {
     title: '',
     placeholder: '', 
+    style: {}, // 同时应用在 yes, no 两个按钮上面的样式
     yes: {
         text: '确定',
         style: {}
@@ -74,6 +77,13 @@ this.$confirm(text)
     .then(success)
     .catch(fail)
 ```
+
+## Update
+1. 2017.7.19 日更新: 为 Confirm 和 Prompt 新增了一个配置选项 style, 用来容纳它们所共同
+拥有的属性, 并且优先级低于各自内部所定义的 style. 
+
+
+## 思考
 * 关于是否应该提供三个版本, 微信, 安卓, iOS 三种样式.
 	为什么会有这样的想法, 因为我的确是觉得,在安卓设备里面你弹出来一个和 iOS 一样的
 	弹窗, 有一点违和的感觉
@@ -85,6 +95,7 @@ this.$confirm(text)
 	3. 有没有让事情变的复杂起来了, 一个简单的弹窗, 为什么还需要做这么复杂?如果你提供的三种样式都不喜欢, 用户是不是还可以自己定制呢?用户如果自己定 制, 你是不是还需要定义额外的事情呢.
 	4. 那么推广, 是不是所有你所定义的组件, 都需要给定几套不一样的样式来兼容不同的组件呢
 	而且这样的情况是不是符合项目的要求呢, 你这样做完之后, 是不是一点意义都没有呢
+
 
 ## 如何基于本项目定制化开发
 有时候你可能需要弹窗的样式变成和你项目所相符合的, 但是又不想要自己写弹窗的逻辑. 可以基于本项目进行二次开发. 具体的步骤如下:

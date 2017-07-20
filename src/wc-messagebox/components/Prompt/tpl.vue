@@ -27,8 +27,8 @@
                     </div>                    
                 </div>
                 <div class="wc-popup-buttons">
-                    <span class="wc-popup-button" :style="yes.style" @click="success">{{yes.text}}</span>
-                    <span class="wc-popup-button" :style="no.style" @click="cancel">{{no.text}}</span>
+                    <span class="wc-popup-button" :style="yesStyle" @click="success">{{yes.text}}</span>
+                    <span class="wc-popup-button" :style="noStyle" @click="cancel">{{no.text}}</span>
                 </div>
             </div>
         </div>
@@ -44,8 +44,9 @@
                 show: false,
                 title: '提示',
                 content: '',
-                placeholder: '长的帅',
+                placeholder: '',
                 value: '',
+                style: {},
                 yes: {
                     text: '确定',
                     style: {}
@@ -56,6 +57,22 @@
                 }
             }
         },
+        computed: {
+            yesStyle () {
+                let o = {};
+                for (let key in this.style) {
+                    o[key] = this.style[key]
+                }
+                return Object.assign(o, this.yes.style);
+            },
+            noStyle () {
+                let o = {};
+                for (let key in this.style) {
+                    o[key] = this.style[key]
+                }
+                return Object.assign(o, this.no.style);
+            }
+        },        
         mounted () {
             setTimeout(()=>{
                 this.$refs.input.focus();

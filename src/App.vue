@@ -91,8 +91,14 @@
       confirm () {
         this.$confirm('欢迎使用 wc-messagebox', {
           title: '提示',
+          style: {
+            'font-size': '12px'
+          },
           yes: {
-            text: '新按钮'
+            text: '新按钮',
+            style: {
+              'font-size': '16px'
+            }
           }
         })
           .then(()=>{
@@ -117,7 +123,10 @@
       prompt () {
         this.$prompt('hello world', {
             title: '日了狗了',
-            placeholder: '到底有没有日狗'
+            placeholder: '到底有没有日狗',
+            style: {
+              'color':'red'
+            }
         })
           .then(v => {
             // console.log(v)
