@@ -1,3 +1,20 @@
+<style scoped lang="less">
+    .v-enter{
+        opacity: 0;
+        .wc-popup{
+            transform: translate3d(-50%, -50%, 0) scale(1.185);
+        }
+    }
+    .v-enter-active, .v-leave-active{
+        transition: all .4s;
+        .wc-popup{
+            transition: all .4s;
+        }
+    }
+    .v-leave-active{
+        opacity: 0;
+    }     
+</style>
 <template>
     <transition>
         <div v-if="show" class="wc">
