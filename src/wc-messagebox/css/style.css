@@ -8,7 +8,6 @@
     font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", STHeiti, "Microsoft Yahei", Tahoma, Simsun, sans-serif;
     -webkit-user-select:none;
     -webkit-tap-highlight-color:rgba(255,255,255,0);
-
 }
 .wc-popup {
     position: fixed;
@@ -152,3 +151,35 @@
     background: #323232;
     opacity: .9;
 }
+
+/* new css */
+.wc
+{
+    opacity: 0;
+    transform: scale(0);
+    transition: opacity 0.4s;
+}
+.wc.show
+{
+    opacity: 1;
+    transform: scale(1);
+}
+.wc.show .wc-popup
+{
+    -webkit-transform: translate3d(-50%, -50%, 0) scale(1);
+}
+.wc-popup
+{
+    transition: transform 0.4s;
+}
+
+.wc-toast.show .wc-toast-message
+{
+    opacity: 0.9;
+}
+.wc-toast-message
+{
+    opacity: 0;
+    transition: opacity 0.4s;
+}
+

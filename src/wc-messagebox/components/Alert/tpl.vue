@@ -1,36 +1,17 @@
-<style scoped lang="less">
-    .v-enter{
-        opacity: 0;
-        .wc-popup{
-            transform: translate3d(-50%, -50%, 0) scale(1.185);
-        }
-    }
-    .v-enter-active, .v-leave-active{
-        transition: all .4s;
-        .wc-popup{
-            transition: all .4s;
-        }
-    }
-    .v-leave-active{
-        opacity: 0;
-    }    
-</style>
 <template>
-    <transition>
-        <div v-if="show" class="wc">
-            <div class="wc-popup wc-popup-in">
-                <div class="wc-popup-inner">
-                    <div class="wc-popup-title" v-if="title">{{title}}</div>
-                    <div class="wc-popup-text">{{content}}</div>
-                </div>
-                <div class="wc-popup-buttons">
-                    <span class="wc-popup-button wc-popup-button-bold" :style="btn.style" @click="success">
-                        {{btn.text}}
-                    </span>
-                </div>
+    <div v-if="show" class="wc" :class="{ show: currentShow }">
+        <div class="wc-popup">
+            <div class="wc-popup-inner">
+                <div class="wc-popup-title" v-if="title">{{title}}</div>
+                <div class="wc-popup-text">{{content}}</div>
+            </div>
+            <div class="wc-popup-buttons">
+                <span class="wc-popup-button wc-popup-button-bold" :style="btn.style" @click="success">
+                    {{btn.text}}
+                </span>
             </div>
         </div>
-    </transition>
+    </div>
 </template>
 <script>
     import pageChange from '../../mixins'
@@ -45,7 +26,8 @@
                 btn: {
                     text: '确定',
                     style: {}
-                }
+                },
+                currentShow: false,
             }
         },
         mounted () {
@@ -55,6 +37,15 @@
             success () {
                 this.show = false;
                 preventPageScroll.recover();
+            }
+        },
+        watch: {
+            show (val, oldval) {
+                if( val ){
+                    setTimeout(()=>{
+                        this.currentShow = true;
+                    }, 10);
+                }
             }
         }
     }

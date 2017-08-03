@@ -40,19 +40,17 @@
     "uglifyjs-webpack-plugin": "^0.3.1",
     "url-loader": "^0.5.8",
     "vconsole": "^2.5.2",
-    "vue": "^2.2.6",
-    "vue-loader": "^11.3.3",
+    "vue": "^2.3.3",
+    "vue-loader": "^12.1.0",
     "vue-router": "^2.3.0",
-    "vue-template-compiler": "^2.2.6",
+    "vue-template-compiler": "^2.3.3",
     "vuex": "^2.2.1",
-    "wc-messagebox": "file:wc-messagebox",
     "webpack": "^2.3.2",
     "webpack-dev-middleware": "^1.10.1",
     "webpack-hot-middleware": "^2.17.1",
     "whatwg-fetch": "^2.0.3"
   },
   "devDependencies": {
-    "wc-messagebox": "file:wc-messagebox",
     "wc-utils": "^1.1.0"
   }
 }

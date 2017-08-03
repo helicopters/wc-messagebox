@@ -1,23 +1,9 @@
-<style scoped lang="less">
-	.fade-enter {
-	  opacity: 0
-	}
-	.fade-enter-active, .fade-leave-active {
-	  transition: opacity .4s
-	}
-	.fade-leave-active {
-		opacity: 0;
-	}
-
-</style>
 <template>
-	<transition name="fade">
-		<div class="wc-toast" v-if="show">
-			<div class="wc-toast-message">
-				{{content}}
-			</div>
+	<div v-if="show" class="wc-toast" :class="{ show: currentShow }">
+		<div class="wc-toast-message">
+			{{content}}
 		</div>
-	</transition>
+	</div>
 </template>
 <script>
     import pageChange from '../../mixins'
@@ -27,8 +13,18 @@
 			return {
 				show: false,
 				content: '',
-				duration: 1500
+				duration: 1500,
+				currentShow: false,
 			}
-		}
+		},
+		watch: {
+            show (val, oldval) {
+                if( val ){
+                    setTimeout(()=>{
+                        this.currentShow = true;
+                    }, 10);
+                }
+            }
+        }
 	}
 </script>
