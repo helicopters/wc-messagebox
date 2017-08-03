@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import PromptComponent from './tpl'
+import PromptComponent from './iOS'
 import merge from 'wc-utils/merge'
 
 let instance;

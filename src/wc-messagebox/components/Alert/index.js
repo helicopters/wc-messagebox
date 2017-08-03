@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import AlertComponent from './tpl'
+import AlertComponent from './iOS'
 import merge from 'wc-utils/merge'
 
 let instance;

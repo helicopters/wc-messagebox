@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import ConfirmComponent from './tpl'
+import ConfirmComponent from './iOS'
 import merge from 'wc-utils/merge'
 
 let instance;
