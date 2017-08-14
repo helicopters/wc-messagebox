@@ -1,14 +1,13 @@
-.wc{
+.wc {
     position: fixed;
     top: 0;
     height: 100%;
     width: 100%;
-    background: rgba(0, 0, 0, .4);   
-    z-index: 998; 
+    background: rgba(0, 0, 0, .4);
+    z-index: 998;
     font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", STHeiti, "Microsoft Yahei", Tahoma, Simsun, sans-serif;
-    -webkit-user-select:none;
-    -webkit-tap-highlight-color:rgba(255,255,255,0);
-
+    -webkit-user-select: none;
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
 }
 .wc-popup {
     position: fixed;
@@ -84,7 +83,7 @@
     color: #3478f6;
     background: rgba(255, 255, 255, .95);
     letter-spacing: 0.5px;
-    cursor:pointer;
+    cursor: pointer;
 }
 .wc-popup-button:after {
     position: absolute;
@@ -116,22 +115,23 @@
 .wc-popup-button:last-child:after {
     display: none;
 }
+
 /* wc-prompt */
 .wc-popup-input {
     width: 100%;
     margin-top: 12px;
 }
-.wc-popup-input input{
-    user-select:text;
+.wc-popup-input input {
+    user-select: text;
     -webkit-appearance: none;
     width: 90%;
     height: 26px;
-    margin:0 auto;  
+    margin: 0 auto;
     padding: 0 5px;
     font-size: 14px;
     background: #fff;
-    border: 0.5px solid rgba(0,0,0,.2);
-    border-radius: 0;    
+    border: 0.5px solid rgba(0, 0, 0, .2);
+    border-radius: 0;
 }
 
 /* wc-toast */
@@ -152,18 +152,20 @@
     background: #323232;
     opacity: .9;
 }
-    .v-enter{
-        opacity: 0;
-        .wc-popup{
-            transform: translate3d(-50%, -50%, 0) scale(1.185);
-        }
+.wc-enter {
+    opacity: 0;
+
+    .wc-popup {
+        transform: translate3d(-50%, -50%, 0) scale(1.185);
     }
-    .v-enter-active, .v-leave-active{
+}
+.wc-enter-active, .wc-leave-active {
+    transition: all .4s;
+
+    .wc-popup {
         transition: all .4s;
-        .wc-popup{
-            transition: all .4s;
-        }
     }
-    .v-leave-active{
-        opacity: 0;
-    } 
+}
+.wc-leave-active {
+    opacity: 0;
+}

@@ -1,17 +1,17 @@
 <style scoped lang="less">
-	.fade-enter {
+	.wc-fade-enter {
 	  opacity: 0
 	}
-	.fade-enter-active, .fade-leave-active {
+	.wc-fade-enter-active, .wc-fade-leave-active {
 	  transition: opacity .4s
 	}
-	.fade-leave-active {
+	.wc-fade-leave-active {
 		opacity: 0;
 	}
 
 </style>
 <template>
-	<transition name="fade">
+	<transition name="wc-fade">
 		<div class="wc-toast" v-if="show">
 			<div class="wc-toast-message">
 				{{content}}

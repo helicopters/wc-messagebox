@@ -1,5 +1,5 @@
 <template>
-    <transition>
+    <transition name="wc">
         <div v-if="show" class="wc">
             <div class="wc-popup wc-popup-in">
                 <div class="wc-popup-inner">
