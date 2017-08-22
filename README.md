@@ -105,6 +105,7 @@ this.$confirm(text)
 4. npm run dev 可以在本地查看修改效果. 
 
 第二种方式:
+
 你可能直接拷贝 src/wc-messagebox 到自己的项目中.此时需要先安装依赖： less, less-loader & lodash.
 ```shell
 npm i lodash less less-loader --save
