@@ -46,7 +46,6 @@
     "webpack-hot-middleware": "^2.17.1"
   },
   "devDependencies": {
-    "wc-messagebox": "file:wc-messagebox",
     "wc-utils": "1.1.0"
   }
 }
