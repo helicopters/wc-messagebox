@@ -3,9 +3,41 @@
     margin:0;
     padding:0;
   }
-  .popup{
-    background: red;
-  }
+
+button{
+    position: relative;
+    display: inline-block;
+
+    padding: 6px 12px;
+    margin-bottom: 5px;
+    margin-left: 10px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42;
+    color: #333;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: top;
+    cursor: pointer;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    -webkit-transition: all;
+    transition: all;
+    -webkit-transition-timing-function: linear;
+    transition-timing-function: linear;
+    -webkit-transition-duration: .2s;
+    transition-duration: .2s;
+    color: #fff;
+    background-color: #007aff;
+    border: 1px solid #007aff;
+}
+
 
 </style>
 <template>
@@ -16,41 +48,7 @@
     <button @click="confirm2">Confirm2</button>
     <button @click="toast">Toast</button>
     <button @click="prompt">Prompt</button>
-    
-    <p>scroll</p>
-    <p>scroll</p>
-    <p>scroll</p>
-    <p>scroll</p>
-    <p>scroll</p>
-    <p>scroll</p>
-    <p>scroll</p>
-    <p>scroll</p>
-    <p>scroll</p>
-    <p>scroll</p>
-    <p>scroll</p>
-    <p>scroll</p>
-    <p>scroll</p>
-    <p>scroll</p>
-    <p>scroll</p>
-    <p>scroll</p>
-    <p>scroll</p>
-    <p>scroll</p>
-    <p>scroll</p>
-    <p>scroll</p>
-    <p>scroll</p>
-    <p>scroll</p>
-    <p>scroll</p>
-    <p>scroll</p>
-    <p>scroll</p>
-    <p>scroll</p>
-    <p>scroll</p>
-    <p>scroll</p>
-    <p>scroll</p>
-    <p>scroll</p>
-    <p>scroll</p>
 
-    <p>scroll</p>
-    <p>scroll</p>
   </div>
 </template>
 <script>
