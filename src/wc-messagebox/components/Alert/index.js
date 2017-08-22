@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import AlertComponent from './tpl'
-import merge from 'wc-utils/merge'
+import merge from 'lodash/merge'
 
 let instance;
 
@@ -24,6 +24,7 @@ let Alert = (content, options = {}) => {
     // 将单个 Alert instance 的配置合并到默认值中
     merge(instance.$data, options);
     
+
     return new Promise((resolve, reject)=>{
         instance.show = true;
 

@@ -4,7 +4,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 // 不需要打包的文件
 const externals = {
-    'vue': 'vue'
+    'vue': 'vue',
+    'lodash/merge': 'lodash/merge'
 }
 
 const packageJson = path.resolve(process.cwd(), 'static') + '/package.json';
@@ -78,6 +79,14 @@ const config = {
         }]
     },
     plugins: [
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        warnings: false
+      },
+      sourceMap: true
+    }),
+
+
         new ExtractTextPlugin('style.css'),
         new webpack.LoaderOptionsPlugin({
             minimize: true

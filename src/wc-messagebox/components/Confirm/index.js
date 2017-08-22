@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import ConfirmComponent from './tpl'
-import merge from 'wc-utils/merge'
+import merge from 'lodash/merge'
+
 
 let instance;
 

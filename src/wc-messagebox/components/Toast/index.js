@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import ToastComponent from './tpl'
 
-
 let instance;
 
 // toast 是否存在的标记位
