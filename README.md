@@ -103,3 +103,17 @@ this.$confirm(text)
 2. npm install 安装依赖
 3. html 不建议修改, 但是样式可以改成你所需要的, 弹窗的所有样式都在 src/wc-messagebox/css/style.css 中
 4. npm run dev 可以在本地查看修改效果. 
+
+第二种方式:
+
+你可能直接拷贝 src/wc-messagebox 到自己的项目中.此时需要先安装依赖： less, less-loader & lodash.
+```shell
+npm i lodash less less-loader --save
+```
+
+
+
+
+
+
+
