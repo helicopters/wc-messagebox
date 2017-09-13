@@ -22,6 +22,8 @@ Vue.use(Confirm, options)
 Vue.use(Prompt, options)
 Vue.use(Toast, duration)
 ```
+备注: wc-messagebox 并没有提供单独引入插件的方式, 比如仅仅引入 Alert 插件, 上面的引入方式
+的根本原因是因为 Alert, Confirm 等都需要单独配置参数的能力.
 
 ## Usage
 ```javascript
@@ -36,7 +38,7 @@ options = {
 }
 
 // confirm
-this.$confirm(content, options)
+this.$confirm(text, options)
 options = {
     title: '', 
     style: {}, // 同时应用在 yes, no 两个按钮上面的样式
@@ -51,10 +53,10 @@ options = {
 }
 
 // toast
-this.$toast(content, duration);
+this.$toast(text, duration);
 
 // prompt
-this.$prompt(content, options)
+this.$prompt(text, options)
 options = {
     title: '',
     placeholder: '', 
