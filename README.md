@@ -1,5 +1,5 @@
 ## wc-messagebox
-* 基于 vue 2.0 开发的弹窗插件
+* 基于 vue 2.x 开发的弹窗插件
 * 包含 Alert, Confirm, Toast, Prompt
 * 仿照 iOS 原生UI(样式来源: [MUI](http://dev.dcloud.net.cn/mui/))
 
@@ -107,10 +107,9 @@ this.$confirm(text)
 4. npm run dev 可以在本地查看修改效果. 
 
 第二种方式:
-
-你可能直接拷贝 src/wc-messagebox 到自己的项目中.此时需要先安装依赖： less, less-loader & lodash.
+你可能直接拷贝 src/wc-messagebox 到自己的项目中.此时需要先安装依赖:
 ```shell
-npm i lodash less less-loader --save
+npm i lodash less less-loader wc-utils --save
 ```
 
 
