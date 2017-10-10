@@ -79,14 +79,6 @@ const config = {
         }]
     },
     plugins: [
-    new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        warnings: false
-      },
-      sourceMap: true
-    }),
-
-
         new ExtractTextPlugin('style.css'),
         new webpack.LoaderOptionsPlugin({
             minimize: true

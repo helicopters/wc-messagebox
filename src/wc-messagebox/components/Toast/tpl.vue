@@ -12,7 +12,7 @@
 </style>
 <template>
 	<transition name="wc-fade">
-		<div class="wc-toast" v-if="show">
+		<div class="wc-toast" v-if="show" :style="style">
 			<div class="wc-toast-message">
 				{{content}}
 			</div>
@@ -27,7 +27,8 @@
 			return {
 				show: false,
 				content: '',
-				duration: 1500
+				duration: 1500,
+				style: {}
 			}
 		}
 	}

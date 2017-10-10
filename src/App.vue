@@ -116,7 +116,11 @@ button{
           })
       },
       toast () {
-        this.$toast('恭喜您, 登录成功!', 2000);
+        this.$toast('恭喜您, 登录成功!', 2000, {
+          'bottom':'200px',
+          // 'backgroundColor':'red',
+          // 'color':'red'
+        });
       },
       prompt () {
         this.$prompt('hello world', {

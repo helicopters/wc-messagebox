@@ -10,23 +10,26 @@ let showing = false;
 let ToastConstructor = Vue.extend(ToastComponent);
 
 // init toast instance
-let initInstance = ()=>{
+let initInstance = (bottom)=>{
     instance = new ToastConstructor({
         el: document.createElement('div')
     });
     document.body.appendChild(instance.$el);
+
 }
 
 // 显示
-let Toast = (content, duration=1500)=>{
+let Toast = (content, duration=1500, style)=>{
     // 如果没有显示, 则不显示
     if (!showing) {
 
         showing = true;
+        
         initInstance();
         instance.show = true;
         instance.content = content;
         instance.duration = duration;
+        instance.style = style;
 
         // 在指定 duration 之后干掉 toast
         setTimeout(()=>{
