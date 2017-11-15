@@ -56,12 +56,13 @@ options = {
 
 
 // toast
-this.$toast(text, duration, style);
-// 2017.10.10 更新:
-// 新增了一个 style 参数, 可以通过此参数来控制 Toast 的位置, 比如这样:
-style = {
-    bottom: '200px'
-}
+this.$toast(text, {
+    durtaion: 200,
+    style: {
+        bottom: '200px'
+    }
+});
+
 
 // prompt
 this.$prompt(text, options)

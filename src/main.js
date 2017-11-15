@@ -5,7 +5,13 @@ import {Alert, Confirm, Toast, Prompt} from './wc-messagebox'
 
 Vue.use(Alert);
 Vue.use(Confirm);
-Vue.use(Toast);
+Vue.use(Toast, {
+	duration: 5000,
+	style: {
+		bottom:'300px',
+		// background:'red'
+	}
+});
 Vue.use(Prompt);
 
 

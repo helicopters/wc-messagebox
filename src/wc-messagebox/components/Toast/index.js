@@ -1,8 +1,11 @@
 import Vue from 'vue'
 import ToastComponent from './tpl'
+import merge from 'lodash/merge'
+
 
 let instance;
 
+let globalConfig = {};
 // toast 是否存在的标记位
 let showing = false;
 
@@ -19,18 +22,23 @@ let initInstance = (bottom)=>{
 }
 
 // 显示
-let Toast = (content, duration=1500, style)=>{
+let Toast = (content, options={})=>{
+
     // 如果没有显示, 则不显示
     if (!showing) {
 
         showing = true;
         
         initInstance();
-        instance.show = true;
+        
         instance.content = content;
-        instance.duration = duration;
-        instance.style = style;
+        // instance.duration = duration;
+        // instance.style = style;
 
+        merge(instance.$data, globalConfig);
+        merge(instance.$data, options);
+
+        instance.show = true;
         // 在指定 duration 之后干掉 toast
         setTimeout(()=>{
             showing = false;
@@ -39,7 +47,8 @@ let Toast = (content, duration=1500, style)=>{
     }
 }
 export default {
-    install (Vue) {
+    install (Vue, config={}) {
+        globalConfig = config;
         Vue.prototype.$toast = Toast;
     }
 };
