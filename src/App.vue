@@ -37,7 +37,7 @@ button{
     background-color: #007aff;
     border: 1px solid #007aff;
 }
-
+  
 
 </style>
 <template>
@@ -47,13 +47,22 @@ button{
     <button @click="confirm">Confirm</button>
     <button @click="confirm2">Confirm2</button>
     <button @click="toast">Toast</button>
+  
+    <alert/>
+
+
 
   </div>
 </template>
 <script>
   import Vue from 'vue'
+
+  import Alert from './wc-messagebox/Alert/tpl'
   export default {
     name: 'app',
+    components: {
+      Alert
+    },
     data () {
       return {
         show: false

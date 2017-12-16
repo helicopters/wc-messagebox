@@ -2,44 +2,31 @@ import Vue from 'vue'
 import ToastComponent from './tpl'
 import merge from 'lodash/merge'
 
-
 let instance;
-
 let globalConfig = {};
-// toast 是否存在的标记位
 let showing = false;
-
-// init constructor
 let ToastConstructor = Vue.extend(ToastComponent);
 
-// init toast instance
+/* 初始化 instance, 并且 append 到页面里面 */
 let initInstance = (bottom)=>{
     instance = new ToastConstructor({
         el: document.createElement('div')
     });
     document.body.appendChild(instance.$el);
-
 }
 
-// 显示
 let Toast = (content, options={})=>{
-
-    // 如果没有显示, 则不显示
+    /* 如果当前已经在显示的话, 不响应*/
     if (!showing) {
-
         showing = true;
-        
         initInstance();
-        
+        /* 设置显示内容 */
         instance.content = content;
-        // instance.duration = duration;
-        // instance.style = style;
-
         merge(instance.$data, globalConfig);
         merge(instance.$data, options);
 
+        /* 显示 */
         instance.show = true;
-        // 在指定 duration 之后干掉 toast
         setTimeout(()=>{
             showing = false;
             instance.show = false;  

@@ -1,13 +1,11 @@
 <style scoped lang="less">
-
-/* wc-toast */
 .wc-toast {
     position: fixed;
     z-index: 9999;
     line-height: 17px;
     left: 50%;
     transform: translate(-50%, 0);
-    bottom: 50px;
+    bottom: 80px;
 }
 .wc-toast-message {
     font-size: 14px;
