@@ -125,8 +125,8 @@ button{
       },
       toast () {
         this.$toast('恭喜您, 登录成功!', {
-          duration: 40000,
-          location: 'top'
+          // duration: 1,
+          // location: 't'
         });
       },
 
