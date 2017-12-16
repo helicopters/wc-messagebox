@@ -5,7 +5,8 @@ import {Alert, Confirm, Toast} from './wc-messagebox'
 
 Vue.use(Alert);
 Vue.use(Confirm);
-Vue.use(Toast);
+Vue.use(Toast, {
+});
 
 new Vue({
     el: '#app',

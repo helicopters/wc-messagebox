@@ -58,6 +58,12 @@ this.$toast(text, {
     location: 'center|top ' // 如果不传递, 默认在底部, 如果传递, 就必须要有值
 });
 
+add: 
+对于 toast 支持了一种图文混合形式
+
+
+
+
 ```
 
 ## Introduction

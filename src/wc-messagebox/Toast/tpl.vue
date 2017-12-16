@@ -28,6 +28,17 @@
     border-radius: 6px;
     background: #323232;
     opacity: .9;
+
+    display: flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    img {
+    	margin-bottom: 8px;
+    }
+    .wc-toast__text {
+    	
+    }
 }
 .wc-fade-enter {
   opacity: 0
@@ -43,8 +54,9 @@
 <template>
 	<transition name="wc-fade">
 		<div class="wc-toast" v-if="show" :class="{'wc-toast--center': location == 'center', 'wc-toast--default': location == '', 'wc-toast--top': location == 'top'}">
-			<div class="wc-toast-message">
-				{{content}}
+			<div class="wc-toast-message" :style="toastStyle">
+				<img :src="path" alt="" :style="imgStyle" v-if="path">
+				<div class="wc-toast__text" :style="textStyle">{{content}}</div>
 			</div>
 		</div>
 	</transition>
@@ -58,7 +70,14 @@
 				show: false,
 				content: '',
 				duration: 1500,
-				location: ''
+				location: '',
+				toastStyle: {
+					/* 因为如果是图文混合, 一般都是指定了宽高 */
+					padding: 0
+				},
+				imgStyle: {},
+				textStyle: {},
+				path: '',
 			}
 		}
 	}

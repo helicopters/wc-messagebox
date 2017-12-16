@@ -8,7 +8,7 @@ let showing = false;
 let ToastConstructor = Vue.extend(ToastComponent);
 
 /* 初始化 instance, 并且 append 到页面里面 */
-let initInstance = (bottom)=>{
+let initInstance = () => {
     instance = new ToastConstructor({
         el: document.createElement('div')
     });

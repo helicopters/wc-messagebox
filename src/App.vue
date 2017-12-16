@@ -47,6 +47,8 @@ button{
     <button @click="confirm">Confirm</button>
     <button @click="confirm2">Confirm2</button>
     <button @click="toast">Toast</button>
+
+    <button @click="toastFn">Toast 图文混合模式</button>
   
     <alert/>
 
@@ -124,11 +126,31 @@ button{
           })
       },
       toast () {
-        this.$toast('恭喜您, 登录成功!', {
-          // duration: 1,
-          // location: 't'
-        });
+        this.$toast('登录成功');
       },
+
+      fn (text, path) {
+        this.$toast(text, {
+          path: path,
+          location: 'center',
+          toastStyle: {
+            height: '100px',
+            width: '100px'
+          },
+          imgStyle: {
+            width: '40px',
+            marginBottom: '15px'
+          },
+        })
+      },
+      toastFn () {
+
+          this.fn('收藏成功', '/static/yes.png');
+
+
+
+
+      }
 
     }
   }
