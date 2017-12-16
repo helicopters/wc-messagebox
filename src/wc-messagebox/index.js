@@ -1,7 +1,7 @@
 import Vue from 'vue'
-import Alert from './components/Alert'
-import Confirm from './components/Confirm'
-import Toast from './components/Toast'
+import Alert from './Alert'
+import Confirm from './Confirm'
+import Toast from './Toast'
 
 import './css/style.less'
 

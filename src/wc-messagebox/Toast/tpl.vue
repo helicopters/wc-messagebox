@@ -20,7 +20,7 @@
 	</transition>
 </template>
 <script>
-    import pageChange from '../../mixins'
+    import pageChange from '../mixins'
 	export default {
         mixins: [pageChange],
 		data () {
