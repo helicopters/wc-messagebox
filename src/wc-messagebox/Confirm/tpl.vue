@@ -1,4 +1,4 @@
-<style lang="less">
+<style lang="less" scoped>
 
 .wc {
     position: fixed;
