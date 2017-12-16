@@ -47,7 +47,6 @@ button{
     <button @click="confirm">Confirm</button>
     <button @click="confirm2">Confirm2</button>
     <button @click="toast">Toast</button>
-    <button @click="prompt">Prompt</button>
 
   </div>
 </template>
@@ -118,19 +117,7 @@ button{
       toast () {
         this.$toast('恭喜您, 登录成功!');
       },
-      prompt () {
-        this.$prompt('hello world', {
-            title: '日了狗了',
-            placeholder: '到底有没有日狗',
-            style: {
-              'color':'red'
-            }
-        })
-          .then(v => {
-            // console.log(v)
-            this.$toast('你的答案是:' + v);
-          })
-      }
+
     }
   }
 </script>
