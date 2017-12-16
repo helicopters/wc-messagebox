@@ -3,9 +3,22 @@
     position: fixed;
     z-index: 9999;
     line-height: 17px;
+}
+
+.wc-toast--default {
     left: 50%;
     transform: translate(-50%, 0);
-    bottom: 80px;
+    bottom: 80px;	
+}
+.wc-toast--center {
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+.wc-toast--top {
+	top: 80px;
+	left: 50%;
+	transform: translate(-50%, -50%);
 }
 .wc-toast-message {
     font-size: 14px;
@@ -29,7 +42,7 @@
 </style>
 <template>
 	<transition name="wc-fade">
-		<div class="wc-toast" v-if="show" :style="style">
+		<div class="wc-toast" v-if="show" :class="{'wc-toast--center': location == 'center', 'wc-toast--default': location == '', 'wc-toast--top': location == 'top'}">
 			<div class="wc-toast-message">
 				{{content}}
 			</div>
@@ -45,7 +58,7 @@
 				show: false,
 				content: '',
 				duration: 1500,
-				style: {}
+				location: ''
 			}
 		}
 	}

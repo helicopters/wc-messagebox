@@ -1,6 +1,6 @@
 ## wc-messagebox
 * 基于 vue 2.x 开发的弹窗插件
-* 包含 Alert, Confirm, Toast, Prompt
+* 包含 Alert, Confirm, Toast
 * 仿照 iOS 原生UI(样式来源: [MUI](http://dev.dcloud.net.cn/mui/))
 
 ## 效果
@@ -14,16 +14,13 @@ npm i wc-messagebox --save
 
 ## Quick Start
 ```javascript
-import {Alert, Confirm, Prompt, Toast} from 'wc-messagebox'
+import {Alert, Confirm, Toast} from 'wc-messagebox'
 import 'wc-messagebox/style.css'
 
 Vue.use(Alert, options)
 Vue.use(Confirm, options)
-Vue.use(Prompt, options)
 Vue.use(Toast, duration)
 ```
-备注: wc-messagebox 并没有提供单独引入插件的方式, 比如仅仅引入 Alert 插件, 上面的引入方式
-的根本原因是因为 Alert, Confirm 等都需要单独配置参数的能力.
 
 ## Usage
 ```javascript
@@ -58,27 +55,9 @@ options = {
 // toast
 this.$toast(text, {
     durtaion: 200,
-    style: {
-        bottom: '200px'
-    }
+    location: 'center|top ' // 如果不传递, 默认在底部, 如果传递, 就必须要有值
 });
 
-
-// prompt
-this.$prompt(text, options)
-options = {
-    title: '',
-    placeholder: '', 
-    style: {}, // 同时应用在 yes, no 两个按钮上面的样式
-    yes: {
-        text: '确定',
-        style: {}
-    },
-    no: {
-        text: '取消',
-        style: {}
-    }
-}
 ```
 
 ## Introduction
@@ -118,7 +97,7 @@ this.$confirm(text)
 第二种方式:
 你可能直接拷贝 src/wc-messagebox 到自己的项目中.此时需要先安装依赖:
 ```shell
-npm i lodash less less-loader wc-utils --save
+npm i lodash less less-loader --save
 ```
 
 
