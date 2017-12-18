@@ -71,10 +71,7 @@
 				content: '',
 				duration: 1500,
 				location: '',
-				toastStyle: {
-					/* 因为如果是图文混合, 一般都是指定了宽高 */
-					padding: 0
-				},
+				toastStyle: {},
 				imgStyle: {},
 				textStyle: {},
 				path: '',
