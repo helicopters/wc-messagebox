@@ -1,7 +1,7 @@
 <style scoped lang="less">
 .wc-toast {
     position: fixed;
-    z-index: 9999;
+    z-index: 999999;
     line-height: 17px;
 }
 

@@ -6,14 +6,14 @@
     height: 100%;
     width: 100%;
     background: rgba(0, 0, 0, .4);
-    z-index: 998;
+    z-index: 999998;
     font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", STHeiti, "Microsoft Yahei", Tahoma, Simsun, sans-serif;
     -webkit-user-select: none;
     -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
 }
 .wc-popup {
     position: fixed;
-    z-index: 999;
+    z-index: 999999;
     top: 50%;
     left: 50%;
     overflow: hidden;
