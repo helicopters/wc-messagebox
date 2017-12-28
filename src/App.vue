@@ -42,29 +42,27 @@ button{
 </style>
 <template>
   <div id="app">
-  	<button @click="alert">Alert</button>
+    <button @click="alert">Alert</button>
     <button @click="alert2">Alert2</button>
+    <button @click="alert3">自定义 Alert </button>
     <button @click="confirm">Confirm</button>
     <button @click="confirm2">Confirm2</button>
     <button @click="toast">Toast</button>
 
     <button @click="toastFn">Toast 图文混合模式</button>
-  
-    <alert/>
-
-
 
   </div>
 </template>
 <script>
-  import Vue from 'vue'
+  
 
-  import Alert from './wc-messagebox/Alert/tpl'
+  import NewAlert from './NewAlert'
+
+
+
+
   export default {
     name: 'app',
-    components: {
-      Alert
-    },
     data () {
       return {
         show: false
@@ -72,29 +70,29 @@ button{
     },
     methods: {
       alert () {
-        this.$alert('欢迎使用 wc-messagebox', {
-          title: '提示',
-          btn: {
-            text: '确定'
-          }
-        })
-        .then(()=>{
-          this.$toast('你点击了确定');
-        })
+        this.$alert('欢迎使用 wc-messagebox')
       },
       alert2 () {
-        this.$alert('欢迎使用 wc-messagebox', {
-          btn: {
-            text: '我变颜色了',
-            style: {
-              'color': 'red'
-            }
-          }
-        })
-        .then(()=>{
-          this.$toast('你点击了确定');
+        this.$alert({
+          title: '这人间哭什么',
+          content:' 怕不能遇见你',
+          btnText: '哦'
         })
       },
+
+      alert3 () {
+        this.$alert({
+          component: {
+            NewAlert
+          },
+          foo: '我是标题',
+          bar: '我是内容',
+          fb: '我是按钮'
+        })
+      },
+
+
+
 
       confirm () {
         this.$confirm('欢迎使用 wc-messagebox', {

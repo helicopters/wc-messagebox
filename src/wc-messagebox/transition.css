@@ -1,0 +1,16 @@
+.wc-messagebox__mask-transition--- {
+	transition: all .4s;
+}
+
+.wc-messagebox__mask-diff--- {
+	opacity: 0!important;
+}
+
+.wc-messagebox__popup-transition--- {
+	transition: all .4s;
+}
+
+.wc-messagebox__popup-diff--- {
+	/* 因为用户可能已经设置了 popup 的 transform, 通常定位到中心就会这么做 */
+	transform: translate3d(-50%, -50%, 0) scale(1.185)!important;
+}
