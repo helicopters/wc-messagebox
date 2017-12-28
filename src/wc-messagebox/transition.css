@@ -11,6 +11,8 @@
 }
 
 .wc-messagebox__popup-diff--- {
+	/* 因为用户有时候可能不是将 popup 写在 mask 里面的*/
+	opacity: 0!important;
 	/* 因为用户可能已经设置了 popup 的 transform, 通常定位到中心就会这么做 */
 	transform: translate3d(-50%, -50%, 0) scale(1.185)!important;
 }

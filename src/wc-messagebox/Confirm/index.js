@@ -89,12 +89,12 @@ let Confirm = (options) => {
         
         instance.success = () => {
             success();
-            resolve('ok');
+            resolve('success');
         }
 
         instance.fail = () => {
             fail();
-            reject('ok');
+            reject('fail');
         }
 
     });

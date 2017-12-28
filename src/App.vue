@@ -44,12 +44,19 @@ button{
   <div id="app">
     <button @click="alert">Alert</button>
     <button @click="alert2">Alert2</button>
-    <button @click="alert3">自定义 Alert </button>
+    
     <button @click="confirm">Confirm</button>
     <button @click="confirm2">Confirm2</button>
     <button @click="toast">Toast</button>
 
     <button @click="toastFn">Toast 图文混合模式</button>
+
+
+
+    <button @click="alert3">自定义 Alert </button>
+
+    <button @click="wxAlertfn">微信 Alert 样式</button>
+    <button @click="wxConfirmfn">微信 Confirm 样式</button>
 
   </div>
 </template>
@@ -57,6 +64,11 @@ button{
   
 
   import NewAlert from './NewAlert'
+
+
+  import wxAlert from './wc-messagebox/tpls/wxAlert'
+
+  import wxConfirm from './wc-messagebox/tpls/wxConfirm'
 
 
 
@@ -69,6 +81,45 @@ button{
       }
     },
     methods: {
+
+
+
+      wxAlertfn () {
+
+        this.$alert({
+          content: '你好呀',
+          component: {
+            wxAlert
+          }
+        })
+
+
+      },
+
+
+      wxConfirmfn () {
+
+        this.$confirm({
+          component: {
+            wxConfirm
+          },
+          content: '我是好人啊'
+        }).then(res=>{
+          this.$toast('微信样式 confirm')
+        }).catch(res=>{
+          this.$toast('触发了 catch')
+        })
+
+
+      },
+
+
+
+
+
+
+
+
       alert () {
         this.$alert('欢迎使用 wc-messagebox')
       },
