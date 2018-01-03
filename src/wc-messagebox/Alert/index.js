@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import AlertContainer from './tpl'
-import iOSAlert from './iOSAlert'
+import iOSAlert from '../iOS/Alert'
 import merge from 'lodash/merge'
 
 let instance;

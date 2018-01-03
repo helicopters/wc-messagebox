@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import ConfirmContainer from './tpl'
-import iOSConfirm from './iOSConfirm'
+import iOSConfirm from '../iOS/Confirm'
 import merge from 'lodash/merge'
 
 let instance;

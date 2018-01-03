@@ -67,10 +67,8 @@
   height: 1px;
   border-top: 1px solid #D5D5D6;
   color: #D5D5D6;
-  -webkit-transform-origin: 0 0;
-          transform-origin: 0 0;
-  -webkit-transform: scaleY(0.5);
-          transform: scaleY(0.5);
+  transform-origin: 0 0;
+  transform: scaleY(0.5);
 }
 
 </style>

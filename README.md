@@ -23,13 +23,11 @@ npm i wc-messagebox --save
 ```javascript
 import {Alert, Confirm, Toast} from 'wc-messagebox'
 import 'wc-messagebox/style.css'
+import Directive from 'wc-messagebox'
 
 Vue.use(Alert, options)
 Vue.use(Confirm, options)
 Vue.use(Toast, duration)
-
-// 如果需要自定义组件的话
-import Directive from 'wc-messagebox'
 Vue.use(Directive)
 
 ```
@@ -82,42 +80,4 @@ this.$toast(text, {
   }
 })
 ```
-
-
-## 多套样式支持
-wc-messagebox 内置一套 iOS 样式, 同时提供了另外两套样式:
-* 微信公众号样式 (样式来源)
-* Android 样式  (样式来源)
-
-
-## 用户自定义组件支持
-
-我要怎么保存呢, 放目录下面去吧, 
-import wxAlert from 'wc-messagebox/wxAlert'
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
