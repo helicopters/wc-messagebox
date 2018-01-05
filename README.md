@@ -38,27 +38,36 @@ Vue.use(Directive)
 // alert
 this.$alert('这里是内容')  // 如果传递一个字符串给 this.$alert, 则 标题默认为 '提示', 按钮默认为 '确定'
 
+如果参数为对象, 则可接受如下配置选项:
+title: '这里是标题',
+content: '这里是内容',
+btnText: '这里是按钮',
+component: {} // 用于用户自定义组件. 
+
+比如:
 this.$alert({
-	title: '这里是标题',
-	content: '这里是内容',
-	btnText: '这里是按钮',
-	component: {} // 可不设置, 适用于用户自定义组件. 
-}).then().catch();
+  title: '我是标题',
+  content: '我是内容'
+})
 
 
 // confirm
 this.$confirm('这里是内容');
 
-this.$confirm({
-	title: '这里是标题',
-	content: '这里是内容',
-	yesStyle: {}, // 设置左边按钮样式
-	yesText: '',  // 左边按钮文本,
-	noStyle: {},  // 设置右边按钮样式,
-	noText: '',   // 设置右边按钮文本
-	component: {} // 可不设置, 适用于用户自定义组件. 
-}).then().catch();
+如果参数为对象, 则可接受如下配置选项:
+title: '这里是标题',
+content: '这里是内容',
+yesStyle: {}, // 设置左边按钮样式
+yesText: '',  // 左边按钮文本,
+noStyle: {},  // 设置右边按钮样式,
+noText: '',   // 设置右边按钮文本
+component: {} // 可不设置, 适用于用户自定义组件.
 
+比如:
+this.$alert({
+  title: '我是标题',
+  content: '我是内容'
+})
 
 // toast
 this.$toast(text, {
