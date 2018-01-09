@@ -5,7 +5,13 @@ import {Alert, Confirm, Toast} from './wc-messagebox'
 import Directive from './wc-messagebox'
 Vue.use(Directive);
 
-Vue.use(Alert);
+
+import wxAlert from './wc-messagebox/wx/Alert'
+Vue.use(Alert, {
+	component: wxAlert
+		
+	// }
+});
 
 Vue.use(Confirm);
 Vue.use(Toast);

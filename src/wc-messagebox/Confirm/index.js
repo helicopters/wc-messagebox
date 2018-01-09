@@ -52,28 +52,23 @@ let Confirm = (options) => {
 
         instance.show = true;
         /* 
-            最终传递进来的 components 是一个对象, 通过 instance.$data.components 可以访问到
-            components 长这样:
-            {
-                Foo: Foo 
+            如果用户传递了 component 对象, 说明需要使用用户自定义的. 
+            我们会在 tpl 里面注册用户组件
+            下面的代码相当于用户在 .vue 组件中这样引入:
+
+            import UserComponent from './xxx'
+            components: {
+                UserComponent
             }
-            要把 key 值赋值给 instance.$data 里面的 activeView, 作为 <component :is="activeView">
-            的参数
-            要向 components 里面注入组件 Foo
+            
         */
 
-        /* 如果用户指定了 components */
-
-        let userComponent = instance.$data.w.component;
-
-        if (userComponent) {
-            for (let key in userComponent) {
-                instance.$options.components[key] = userComponent[key];
-            }
+        if (instance.$data.w.component) {
+            instance.$options.components['userConfig'] = instance.$data.w.component;
             /* 设置当前的 activeView */
-            instance.activeView = Object.keys(userComponent)[0];
+            instance.activeView = 'userConfig';
         } else {
-            instance.$options.components['iOS'] = iOSConfirm;
+            instance.$options.components['iOS'] = iOSAlert;
             instance.activeView = 'iOS';            
         }
 

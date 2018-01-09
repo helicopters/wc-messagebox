@@ -20,8 +20,8 @@
         mounted () {
             preventPageScroll.prevent();
             setTimeout(()=>{
-                s('.wc-messagebox__btn--then').addEventListener('click', this.success, false);
-                s('.wc-messagebox__btn--catch').addEventListener('click', this.fail, false);
+                s('.wc-messagebox__btn--then') && s('.wc-messagebox__btn--then').addEventListener('click', this.success, false);
+                s('.wc-messagebox__btn--catch') && s('.wc-messagebox__btn--catch').addEventListener('click', this.fail, false);
             },1);
         },
         methods: {
