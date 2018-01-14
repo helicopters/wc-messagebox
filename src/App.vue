@@ -9,9 +9,18 @@
 			Alert
 		</button>
 
+		<button @click="confirm">
+			Confirm
+		</button>
+
+
 		<button @click="wxAlert">
-			微信 Alert
-		</button>	
+			wxAlert
+		</button>
+
+		<button @click="wxConfirm">
+			wxConfirm
+		</button>
 
 
 	</div>
@@ -20,29 +29,42 @@
 
 </template>
 <script>
-	import Alert from './wc-messagebox/wx/Alert'
 
-	import UserAlert from './UserAlert'
+	import wxAlert from './wc-messagebox/wx/Alert'
+	import wxConfirm from './wc-messagebox/wx/Confirm'
+
+
+
 	export default {
 		name: 'App',
-		component: {
-			Alert,
-			UserAlert
+
+		components: {
+			wxAlert,
+			wxConfirm
 		},
+
 		methods: {
 			alert () {
 				this.$alert('你好')
 			},
 			wxAlert () {
 				this.$alert({
-					component: UserAlert,
+					title:'微信',
 					content: '你好',
-					btnText: '我日啊'
-				});
+					component: wxAlert
+				})
+			},
+			confirm () {
+				this.$confirm('大家好')
+			},
+			wxConfirm () {
+				this.$confirm({
+					title: '微信 2',
+					content: '啥玩意',
+					component: wxConfirm
+				})
+			},
 
-				this.$alert('微信样式')
-
-			}
 		}
 	}
 </script>

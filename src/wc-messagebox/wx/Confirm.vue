@@ -1,16 +1,16 @@
 <style scoped>
 .weui-mask {
   position: fixed;
-  z-index: 1000;
+  z-index: 999998;
   top: 0;
   right: 0;
   left: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(0, 0, 0, 0.4);
 }
 .weui-dialog {
   position: absolute;
-  z-index: 5000;
+  z-index: 999999;
   width: 80%;
   max-width: 300px;
   top: 50%;
@@ -104,7 +104,6 @@
 
 </style>
 <template>
-
     <div class="wx-confirm">
         <div class="weui-mask" style="" v-wc-mask></div>
         <div class="weui-dialog" style="" v-wc-popup>

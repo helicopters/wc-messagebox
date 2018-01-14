@@ -6,12 +6,8 @@ import Directive from './wc-messagebox'
 Vue.use(Directive);
 
 
-import wxAlert from './wc-messagebox/wx/Alert'
-Vue.use(Alert, {
-	component: wxAlert
-		
-	// }
-});
+// import wxAlert from './wc-messagebox/wx/Alert'
+Vue.use(Alert);
 
 Vue.use(Confirm);
 Vue.use(Toast);

@@ -12,7 +12,7 @@
 }
 .wx-alert__popup {
     position: absolute;
-    z-index: 5000;
+    z-index: 999999;
     width: 80%;
     max-width: 300px;
     top: 50%;
@@ -27,11 +27,11 @@
 
 
 .wx-dialog__hd {
-	padding: 1.3em 1.6em 0.5em;
+    padding: 1.3em 1.6em 0.5em;
 }
 .wx-dialog__title {
     font-weight: 400;
-    font-size: 18px;	
+    font-size: 18px;    
 }
 
 .wx-dialog__bd {
@@ -41,13 +41,13 @@
     line-height: 1.3;
     word-wrap: break-word;
     word-break: break-all;
-    color: #999999;	
+    color: #999999; 
 }
 .wx-dialog__ft {
     position: relative;
     line-height: 48px;
     font-size: 18px;
-    display: flex;	
+    display: flex;  
 }
 .wx-dialog__btn {
     display: block;
@@ -55,7 +55,7 @@
     color: #3CC51F;
     text-decoration: none;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    position: relative;	
+    position: relative; 
 }
 
 .wx-dialog__ft:after {
@@ -73,22 +73,20 @@
 
 </style>
 <template>
-	<div class="wx-alert-container">
-		<div class="wx-alert__mask" v-wc-mask>
-			<div class="wx-alert__popup" v-wc-popup>
-				<div class="wx-dialog__hd">
-					<strong class="wx-dialog__title">{{w.title || "操作提示"}}</strong>
-				</div> 
-				<div class="wx-dialog__bd">{{w.content}}</div> 
-				<div class="wx-dialog__ft">
-					<a href="javascript:;" class="wx-dialog__btn wx-dialog__btn_primary" v-wc-then>{{w.btnText || "确定"}}</a>
-				</div>
-			</div>
-		</div>
-	</div>
+    <div class="wx-alert__mask" v-wc-mask>
+        <div class="wx-alert__popup" v-wc-popup>
+            <div class="wx-dialog__hd">
+                <strong class="wx-dialog__title">{{w.title || "操作提示"}}</strong>
+            </div> 
+            <div class="wx-dialog__bd">{{w.content}}</div> 
+            <div class="wx-dialog__ft">
+                <a href="javascript:;" class="wx-dialog__btn wx-dialog__btn_primary" v-wc-then>{{w.btnText || "确定"}}</a>
+            </div>
+        </div>
+    </div>
 </template>
 <script>
-	export default {
-		props: ['w']
-	}
+    export default {
+        props: ['w']
+    }
 </script>

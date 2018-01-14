@@ -68,7 +68,7 @@ let Confirm = (options) => {
             /* 设置当前的 activeView */
             instance.activeView = 'userConfig';
         } else {
-            instance.$options.components['iOS'] = iOSAlert;
+            instance.$options.components['iOS'] = iOSConfirm;
             instance.activeView = 'iOS';            
         }
 
