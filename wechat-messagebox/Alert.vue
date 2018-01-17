@@ -79,7 +79,7 @@
                 <strong class="wx-dialog__title">{{w.title || "操作提示"}}</strong>
             </div> 
             <div class="wx-dialog__bd">{{w.content}}</div> 
-            <div class="wx-dialog__ft">
+            <div class="wx-dialog__ft" :style="w.style">
                 <a href="javascript:;" class="wx-dialog__btn wx-dialog__btn_primary" v-wc-then>{{w.btnText || "确定"}}</a>
             </div>
         </div>

@@ -1,8 +1,8 @@
 ## wc-messagebox
 * 基于 vue 2.x 开发的弹窗插件
 * 包含 Alert, Confirm, Toast
-* 仿照 iOS 原生UI(样式来源: [MUI](http://dev.dcloud.net.cn/mui/))
 * 支持用户自定义 Alert, Confirm 组件.
+* iOS样式来源: ([MUI](http://dev.dcloud.net.cn/mui/))
 
 
 ## 说明
@@ -23,11 +23,11 @@ npm i wc-messagebox --save
 ```javascript
 import {Alert, Confirm, Toast} from 'wc-messagebox'
 import 'wc-messagebox/style.css'
-import Directive from 'wc-messagebox'
-
-Vue.use(Alert, options)
-Vue.use(Confirm, options)
+Vue.use(Alert, {})
+Vue.use(Confirm, {})
 Vue.use(Toast, duration)
+
+import Directive from 'wc-messagebox'
 Vue.use(Directive)
 
 ```
@@ -64,7 +64,7 @@ noText: '',   // 设置右边按钮文本
 component: Component // 可不设置, 适用于用户自定义组件.
 
 比如:
-this.$alert({
+this.$confirm({
   title: '我是标题',
   content: '我是内容'
 })
@@ -95,38 +95,7 @@ this.$toast(text, {
 > 经常一些情况下, iOS的弹窗样式可能满足不了你. 比如你需要微信的弹窗样式.
 更一些时候, 可能用户需要自定义弹窗样式, 比如设计师给出了一套符合项目的弹窗样式. 
 
-* 起初, 我是想着内置 iOS, Android, 微信三套弹窗样式. 这样带来的缺点就是文件会比较大, 而且经常性的
-一个项目只要一种样式即可. 再者, 即使我内置了三套样式, 用户可能也是需要其他的样式. 颇有点千人千面的感觉. 
-
-* 所以我对代码做了一些修改, 修改之后的结果, 能够达到: 允许用户自定义弹窗; 这样用户就可以随意的定义自己
-需要的弹窗样式, 而不必从头到尾再完整实现一套弹窗逻辑. 
-
-* wc-messagebox 这个插件, 内置了一套 iOS 的弹窗样式. 并且我在 src/wc-messagbox/wx 里面存放了
-微信的弹窗样式. 用户可以通过 自定义弹窗样式 来使用它. wc-messagebox 以后可以充当成一个插槽一样的存在.
-支持任意的弹窗样式使用它. 
-
-
-## 自定义弹窗的步骤
-1. 首先, 你要引入一些 directives
-```sheel
-import D from 'wc-messagebox'
-Vue.use(D)
-```
-这些指令, 主要是用来标记取消, 确定按钮. 以及辅助实现弹窗动画效果. 
-
-2. 其次, 你要新建一份 User.vue, 用来容纳你所自定义的弹窗代码. demo:
-
-3. 你要在你的弹窗中的 mask, 以及弹窗, 和确定, 取消按钮上面添加 directives;
-
-
-
-
-
-
-
-
-
-
+模仿 wx-messagebox 即可.
 
 
 

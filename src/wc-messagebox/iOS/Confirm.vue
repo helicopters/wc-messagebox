@@ -120,7 +120,6 @@
     
 </style>
 <template>
-
     <div class="wc-mask" v-wc-mask>
         <div class="wc-popup wc-popup-in" v-wc-popup>
             <div class="wc-popup-inner">

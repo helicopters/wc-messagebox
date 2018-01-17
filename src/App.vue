@@ -30,8 +30,8 @@
 </template>
 <script>
 
-	import wxAlert from './wc-messagebox/wx/Alert'
-	import wxConfirm from './wc-messagebox/wx/Confirm'
+	import wxAlert from '../wechat-messagebox/Alert'
+	import wxConfirm from '../wechat-messagebox/Confirm'
 
 
 
