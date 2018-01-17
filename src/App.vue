@@ -23,6 +23,12 @@
 		</button>
 
 
+		<button @click="toast">
+			toast
+		</button>
+
+
+
 	</div>
 
 
@@ -64,6 +70,11 @@
 					component: wxConfirm
 				})
 			},
+			toast () {
+				this.$toast('十里寒塘路', {
+					location: ''
+				})
+			}
 
 		}
 	}

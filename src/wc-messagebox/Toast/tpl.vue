@@ -53,7 +53,7 @@
 </style>
 <template>
 	<transition name="wc-fade">
-		<div class="wc-toast" v-if="show" :class="{'wc-toast--center': location == 'center', 'wc-toast--default': location == '', 'wc-toast--top': location == 'top'}">
+		<div class="wc-toast" v-if="show" :class="{'wc-toast--center': location == 'center'|| location =='', 'wc-toast--default': location == 'bottom', 'wc-toast--top': location == 'top'}">
 			<div class="wc-toast-message" :style="toastStyle">
 				<img :src="path" alt="" :style="imgStyle" v-if="path">
 				<div class="wc-toast__text" :style="textStyle">{{content}}</div>
@@ -70,7 +70,7 @@
 				show: false,
 				content: '',
 				duration: 1500,
-				location: '',
+				location: 'center',
 				toastStyle: {},
 				imgStyle: {},
 				textStyle: {},

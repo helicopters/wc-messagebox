@@ -72,7 +72,7 @@ this.$confirm({
 // toast
 this.$toast(text, {
     durtaion: 200,
-    location: 'center|top ' // 如果不传递, 默认在底部, 如果传递, 就必须要有值
+    location: 'bottom|center|top' // 如果不传递, 默认在中间
 });
 
 // toast 的图文混合模式
