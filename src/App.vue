@@ -38,6 +38,9 @@
 
 	import wxAlert from '../wechat-messagebox/Alert'
 	import wxConfirm from '../wechat-messagebox/Confirm'
+	import D from './wc-messagebox'
+	import Vue from 'vue'
+	Vue.use(D)
 
 
 

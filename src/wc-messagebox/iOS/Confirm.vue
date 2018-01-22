@@ -95,7 +95,7 @@
     bottom: auto;
     left: auto;
     display: block;
-    width: 1px;
+    width: .5px;
     height: 100%;
     content: '';
     transform: scaleX(.5);
@@ -135,7 +135,19 @@
 
 </template>
 <script>
+
+    import wcThen  from '../directives/wc-then'
+    import wcCatch from '../directives/wc-catch'
+    import wcMask  from '../directives/wc-mask'
+    import wcPopup from '../directives/wc-popup'
+
 	export default {
-		props: ['w']
+		props: ['w'],
+        directives: {
+            wcThen,
+            wcCatch,
+            wcMask,
+            wcPopup
+        }        
 	}
 </script>

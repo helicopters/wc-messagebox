@@ -114,8 +114,8 @@
                 <p style="text-align: center;">{{w.content}}</p>
             </div>
             <div class="weui-dialog__ft">
-            	<a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_default" v-wc-catch :style="noStyle">{{w.noText || "取消"}}</a> 
-            	<a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_primary" v-wc-then :style="yesStyle">{{w.yesText || "确定"}}</a>
+            	<a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_default" v-wc-catch :style="w.noStyle">{{w.noText || "取消"}}</a> 
+            	<a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_primary" v-wc-then :style="w.yesStyle">{{w.yesText || "确定"}}</a>
             </div>
         </div>
     </div>

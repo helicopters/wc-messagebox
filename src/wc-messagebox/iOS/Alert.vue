@@ -134,7 +134,19 @@
     </div>
 </template>
 <script>
+
+    import wcThen  from '../directives/wc-then'
+    import wcCatch from '../directives/wc-catch'
+    import wcMask  from '../directives/wc-mask'
+    import wcPopup from '../directives/wc-popup'
+
 	export default {
-		props: ['w']
+		props: ['w'],
+        directives: {
+            wcThen,
+            wcCatch,
+            wcMask,
+            wcPopup
+        }
 	}
 </script>
