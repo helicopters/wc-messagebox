@@ -54,6 +54,7 @@
 
 		methods: {
 			alert () {
+				this.$alert('你好');
 				this.$alert('你好')
 			},
 			wxAlert () {

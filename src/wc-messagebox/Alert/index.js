@@ -3,19 +3,23 @@ import AlertContainer from './tpl'
 import iOSAlert from '../iOS/Alert'
 import merge from 'lodash/merge'
 
-let instance;
+
 let globalConfig = {};
 let AlertConstructor = Vue.extend(AlertContainer);
 
-let initInstance = ()=>{
+// let initInstance = ()=>{
+//     instance = new AlertConstructor({
+//         el: document.createElement('div')
+//     });
+//     document.body.appendChild(instance.$el);
+// }
+let Alert = (options) => {
+    let instance;
+    // initInstance();  
     instance = new AlertConstructor({
         el: document.createElement('div')
     });
     document.body.appendChild(instance.$el);
-}
-let Alert = (options) => {
-
-    initInstance();  
 
     /*
         如果 options 是一个字符串, 说明用户的调用方式是这样:
@@ -72,6 +76,7 @@ let Alert = (options) => {
 
         /*fix 弹窗出来之后依旧键盘没有回收*/
         let inputs = Array.prototype.slice.call(document.querySelectorAll('input'));
+
         inputs.forEach((input)=>{
             input.blur();
         });
