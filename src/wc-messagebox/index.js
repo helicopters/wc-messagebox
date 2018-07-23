@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Alert from './alert'
 import Confirm from './confirm'
 import Toast from './toast'
+import Loading from './loading'
 
 import wcThen from './directives/wc-then'
 import wcCatch from './directives/wc-catch'
@@ -22,5 +23,6 @@ export default {
 export{
 	Alert,
 	Confirm,
-	Toast
+	Toast,
+  Loading
 }

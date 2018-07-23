@@ -19,11 +19,12 @@ npm i wc-messagebox --save
 
 ## Quick Start
 ```javascript
-import {Alert, Confirm, Toast} from 'wc-messagebox'
+import {Alert, Confirm, Toast, Loading} from 'wc-messagebox'
 import 'wc-messagebox/style.css'
-Vue.use(Alert, {})
-Vue.use(Confirm, {})
+Vue.use(Alert)
+Vue.use(Confirm)
 Vue.use(Toast, duration)
+Vue.use(Loading)
 ```
 
 
@@ -83,6 +84,11 @@ this.$toast(text, {
     marginBottom: '15px'
   }
 })
+
+
+// loading
+this.$loading.show('自定义文字'); //显示
+this.$loading.hide(); //隐藏
 ```
 
 

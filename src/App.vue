@@ -27,7 +27,9 @@
 			toast
 		</button>
 
-
+		<button @click="loading">
+			loading
+		</button>
 
 	</div>
 
@@ -79,6 +81,9 @@
 				this.$toast('十里寒塘路', {
 					location: ''
 				})
+			},
+			loading () {
+				this.$loading.show('自定义文件')
 			}
 
 		}
