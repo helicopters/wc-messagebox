@@ -1,5 +1,4 @@
 <style lang="less" scoped>
-
 .wc-mask {
     position: fixed;
     top: 0;

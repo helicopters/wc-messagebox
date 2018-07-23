@@ -54,8 +54,8 @@
 
 		methods: {
 			alert () {
-				this.$alert('你好');
-				this.$alert('你好')
+				this.$alert('第一个弹窗');
+				this.$alert('第二个弹窗')
 			},
 			wxAlert () {
 				this.$alert({
@@ -66,6 +66,7 @@
 			},
 			confirm () {
 				this.$confirm('大家好')
+				this.$confirm('惊喜不')
 			},
 			wxConfirm () {
 				this.$confirm({
